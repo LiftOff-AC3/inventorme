@@ -4,7 +4,7 @@ import Forms from "../layout/Forms";
 export default function Registration(){
     return(
         <>
-            <h1>Signup</h1>
+            <h1 className="m-5 text-center" >Signup</h1>
             <Forms/>
         </>
         
