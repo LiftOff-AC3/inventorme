@@ -1,8 +1,11 @@
 import React from "react";
-import Form from "../forms";
+import Forms from "../layout/Forms";
 
 export default function Registration(){
     return(
-        <Form/>
+        <div>
+        <Forms/>
+        <h1>Header tag</h1>
+        </div>
     )
 }

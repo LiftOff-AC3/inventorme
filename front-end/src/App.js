@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Registration from "./components/screens/Registration";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         Learn React
       </a>
     </header>
+    <Registration/>
   </div>
   );
 }
