@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Forms(){
     return(
-       <form>
+       <form >
             <label for="name">Name: </label>
             <input type="name" placeholeder="John Doe" id="name" name="text"></input>
             <label for="name">Company: </label>
