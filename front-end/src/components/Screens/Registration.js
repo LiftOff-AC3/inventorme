@@ -3,9 +3,10 @@ import Forms from "../layout/Forms";
 
 export default function Registration(){
     return(
-        <div>
-        <Forms/>
-        <h1>Header tag</h1>
-        </div>
+        <>
+            <h1>Signup</h1>
+            <Forms/>
+        </>
+        
     )
 }
