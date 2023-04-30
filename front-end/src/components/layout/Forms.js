@@ -17,6 +17,9 @@ export default function Forms(){
       if(name == "" || email == "" || password == "" || confirmPassword == ""){
         alert("Please fill out all required fields.")
       }
+      if(password !== confirmPassword){
+        alert("Please enter the same password.")
+      }
       console.log(`Name: ${name}`);
       console.log(`Company: ${company}`);
       console.log(`Email: ${email}`);
