@@ -14,8 +14,9 @@ export default function Forms(){
 
     const handleClick = (e) => {
       e.preventDefault();
-      console.log("Clicked");
-      console.log("Submitted");
+      if(name == "" || email == "" || password == "" || confirmPassword == ""){
+        alert("Please fill out all required fields.")
+      }
       console.log(`Name: ${name}`);
       console.log(`Company: ${company}`);
       console.log(`Email: ${email}`);
