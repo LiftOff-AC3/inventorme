@@ -24,7 +24,7 @@ export default function Forms(){
         <Form.Label for="password">Verify Password: </Form.Label>
         <Form.Control type="password" placeholder="*********" id="password" name="email"></Form.Control>
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button className="mx-5" variant="primary" type="submit">
         Submit
       </Button>
     </Form>
