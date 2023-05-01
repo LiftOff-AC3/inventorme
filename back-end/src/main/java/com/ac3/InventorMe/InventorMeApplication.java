@@ -1,13 +1,13 @@
-package com.liftoffac3.inventorme;
+package com.ac3.InventorMe;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class InventormeApplication {
+public class InventorMeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(InventormeApplication.class, args);
+		SpringApplication.run(InventorMeApplication.class, args);
 	}
 
 }
