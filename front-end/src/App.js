@@ -2,13 +2,34 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registration from "./components/screens/Registration";
 import Landing from "./components/screens/Landing";
+<<<<<<< HEAD
 
+=======
+import { useState } from 'react';
+>>>>>>> 573049bdc395ed403b9be37535ae2fcf26f75ae0
 
+//TODO: add either hooks or booleans to show or hide certain components based on button clicked JY 
 function App() {
+  const [showRegistration, setShowRegistration] = useState(false);
+  const [showLanding, setShowLanding] = useState(true)
+
+  function handleCreateAccount() {
+    setShowRegistration(true);
+    setShowLanding(false);
+
+  }
   return (
     <div>
+
     <Landing/>
     <Registration/>
+=======
+        {showRegistration ? (
+        <Registration />
+      ) : (
+        <Landing handleCreateAccount={handleCreateAccount} />
+      )}
+
     </div>
   );
 }
