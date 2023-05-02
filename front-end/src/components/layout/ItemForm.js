@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 export default function ItemForm() {
 
@@ -10,24 +10,24 @@ export default function ItemForm() {
 const [item, setItem] = useState({
   itemName : "",
   itemQuantity : "",
-  Description : ""
+  description : ""
 });
 
 const onChangeItem = (e) => {
   setItem({...item,[e.target.name] : e.target.value})
 }
-//  const onSubmit = async (e) => {
-//   e.preventDefault();
-//   await axios.post("http://localhost:8080/item",item);
-//  }
-
-const handleClick = (e) => {
+ const onSubmit = async (e) => {
   e.preventDefault();
+  await axios.post("http://localhost:8080/item",item);
+ }
 
-  console.log(`Item Name: ${item.itemName}`);
-  console.log(`Quantity: ${item.itemQuantity}`);
-  console.log(`Description: ${item.Description}`);
-}
+// const handleClick = (e) => {
+//   e.preventDefault();
+
+//   console.log(`Item Name: ${item.itemName}`);
+//   console.log(`Quantity: ${item.itemQuantity}`);
+//   console.log(`Description: ${item.Description}`);
+// }
 
   return (
     <div className="container">
@@ -36,7 +36,7 @@ const handleClick = (e) => {
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 text-center">
           <h2 className="m-4">Create Item</h2>
           
-          <form onSubmit={handleClick}>
+          <form onSubmit={onSubmit}>
           
           <div className="text-center mb-3">
             <label htmlFor="Name" className="form-label">
@@ -65,14 +65,14 @@ const handleClick = (e) => {
           </div>
           
           <div className="text-center mb-3">
-            <label htmlFor="Description" className="form-label">
+            <label htmlFor="description" className="form-label">
               Description
             </label>
             <input type={"text"} 
             className="form-control" 
             placeholder="Enter Brief Description of Item" 
-            name="Description" 
-            value={item.Description} 
+            name="description" 
+            value={item.description} 
             onChange={onChangeItem}
             />
           </div>
