@@ -1,4 +1,7 @@
+import Button from 'react-bootstrap/esm/Button';
 import React from 'react';
+
+
 
 const Landing = () => {
     return (
@@ -7,10 +10,10 @@ const Landing = () => {
               <img src='logo_transparent.png' alt='logo' style={{float: 'left', marginRight: '10px'}} ></img>
                 <h2 style={{float: 'left', margin:'25px'}}>Welcome To InventorMe!</h2>
                 <div style={{float: 'right', margin: '25px'}}>
-                    <button id='addItem' class ="glass" type = 'submit' style={{margin:'10px'}}>Add Item</button>
+                    <Button href='additem' id='addItem' class ="mx-5" type = 'submit' style={{margin:'10px'}}>Add Item</Button>
                     
                     <button id='login' class='glass' type="submit" style={{margin:'10px'}}>Login</button>
-                    <button id ='createAccount' class="glass" type="submit" style={{margin:'10px'}}>Create Account</button>
+                    <Button href='register' id ='createAccount' class='mx-5' type="submit" style={{margin:'10px'}}>Create Account</Button>
                 </div>
             </nav>
             
