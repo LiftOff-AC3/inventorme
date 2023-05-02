@@ -15,7 +15,7 @@ const Landing = (props) => {
               <img src='logo_transparent.png' alt='logo' style={{float: 'left', marginRight: '1em'}} ></img>
                 <h2 style={{float: 'left', margin:'25px'}}>Welcome To InventorMe!</h2>
                 <div style={{float: 'right', margin: '25px'}}>
-                    <button id='addItem' class ="glass" type = 'submit' style={{margin:'10px'}}>Add Item</button>
+                    <Button href='additem' id='addItem' class ="mx-5" type = 'submit' style={{margin:'10px'}}>Add Item</Button>
                     
                     <button id='login' class='glass' onClick={handleLogin} style={{margin:'10px'}}>Login</button>
                     <button id ='createAccount' class="glass" onClick={handleCreateAccount} style={{margin:'10px'}}>Create Account</button>
