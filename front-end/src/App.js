@@ -25,24 +25,12 @@ function App() {
   }
   return (
       <div>
-          {showRegistration ? (
-          <Registration />
-        ) : (
-          <Landing handleCreateAccount={handleCreateAccount} />
-        )}
-
+        { showLanding && <Landing handleCreateAccount= { handleCreateAccount} handleLogin={ handleLogin} /> }
+        { showRegistration && <Registration /> }
+        { showLogin && <Login/> }
       </div>
     );
 }
 
 export default App;
 
-      /*
-        I can't figure out how to get this to run in the return statement,
-
-         {showLogin ? (
-         <LoginPage /> : (
-         <Landing handleLogin={handleLogin} />
-         )}
-
-      */
