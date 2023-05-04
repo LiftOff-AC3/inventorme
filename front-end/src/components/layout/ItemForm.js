@@ -3,9 +3,7 @@ import axios from "axios";
 
 export default function ItemForm() {
 
-// const [itemName, setItemName] = useState("");
-// const [itemQuantity, setItemQuantity] = useState("");
-// const [Description, setDescription] = useState("");
+
 
 const [item, setItem] = useState({
   itemName : "",
@@ -21,13 +19,7 @@ const onChangeItem = (e) => {
   await axios.post("http://localhost:8080/item",item);
  }
 
-// const handleClick = (e) => {
-//   e.preventDefault();
 
-//   console.log(`Item Name: ${item.itemName}`);
-//   console.log(`Quantity: ${item.itemQuantity}`);
-//   console.log(`Description: ${item.Description}`);
-// }
 
   return (
     <div className="container">
