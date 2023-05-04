@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 
 
 export default function Forms(){
-  
+
     const [name, setName] = useState("");
     const [company, setCompany] = useState("");
     const [email, setEmail] = useState("");
@@ -33,7 +33,7 @@ export default function Forms(){
       <Form.Group controlId="formName" className="m-5">
         <Form.Label>Name: </Form.Label>
         <Form.Control type="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="John Doe"></Form.Control>
-      </Form.Group>  
+      </Form.Group>
       <Form.Group controlId="formCompany" className="m-5">
         <Form.Label>Company: </Form.Label>
         <Form.Control type="name" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="My Company"></Form.Control>
