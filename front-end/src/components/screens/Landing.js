@@ -1,19 +1,20 @@
-import Button from 'react-bootstrap/esm/Button';
-import React from 'react';
+import React, { useState } from 'react';
 
-
-
-const Landing = () => {
+const Landing = (props) => {
+    function handleCreateAccount() {
+        props.handleCreateAccount();
+    }
+  
     return (
-           <div>
+           <div id='landing-page' style={{height:'100vh'}}>
            <nav style={{margin: '10px'}}>
-              <img src='logo_transparent.png' alt='logo' style={{float: 'left', marginRight: '10px'}} ></img>
+              <img src='logo_transparent.png' alt='logo' style={{float: 'left', marginRight: '1em'}} ></img>
                 <h2 style={{float: 'left', margin:'25px'}}>Welcome To InventorMe!</h2>
                 <div style={{float: 'right', margin: '25px'}}>
-                    <Button href='additem' id='addItem' class ="mx-5" type = 'submit' style={{margin:'10px'}}>Add Item</Button>
+                    <button id='addItem' class ="glass" type = 'submit' style={{margin:'10px'}}>Add Item</button>
                     
                     <button id='login' class='glass' type="submit" style={{margin:'10px'}}>Login</button>
-                    <Button href='register' id ='createAccount' class='mx-5' type="submit" style={{margin:'10px'}}>Create Account</Button>
+                    <button id ='createAccount' class="glass" onClick={handleCreateAccount} style={{margin:'10px'}}>Create Account</button>
                 </div>
             </nav>
             
