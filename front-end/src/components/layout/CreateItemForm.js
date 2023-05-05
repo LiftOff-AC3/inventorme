@@ -1,35 +1,27 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function ItemForm() {
-
-
+export default function CreateItemForm() {
 
 const [item, setItem] = useState({
   itemName : "",
   itemQuantity : "",
   description : ""
 });
-
 const onChangeItem = (e) => {
   setItem({...item,[e.target.name] : e.target.value})
 }
- const onSubmit = async (e) => {
+const onSubmit = async (e) => {
   e.preventDefault();
   await axios.post("http://localhost:8080/item",item);
- }
-
-
+}
 
   return (
     <div className="container">
       <div className="row">
-
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 text-center">
           <h2 className="m-4">Create Item</h2>
-          
           <form onSubmit={onSubmit}>
-          
           <div className="text-center mb-3">
             <label htmlFor="Name" className="form-label">
               Item Name
@@ -42,7 +34,6 @@ const onChangeItem = (e) => {
             onChange={onChangeItem}
             />
           </div>
-          
           <div className="text-center mb-3">
             <label htmlFor="Quantity" className="form-label">
               Quantity
@@ -55,7 +46,6 @@ const onChangeItem = (e) => {
             onChange={onChangeItem}
             />
           </div>
-          
           <div className="text-center mb-3">
             <label htmlFor="description" className="form-label">
               Description
@@ -68,17 +58,11 @@ const onChangeItem = (e) => {
             onChange={onChangeItem}
             />
           </div>
-          
           <button type="submit" className="btn btn-outline-primary">
             Submit
-          
           </button>
-          
           </form>
-        
         </div>
-
-      
       </div>
     </div>
   )
