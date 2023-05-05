@@ -4,7 +4,11 @@ const Landing = (props) => {
     function handleCreateAccount() {
         props.handleCreateAccount();
     }
-  
+
+    function handleLogin() {
+        props.handleLogin();
+    }
+
     return (
            <div id='landing-page' style={{height:'100vh'}}>
            <nav style={{margin: '10px'}}>
@@ -13,8 +17,7 @@ const Landing = (props) => {
                 <div style={{float: 'right', margin: '25px'}}>
                     <button id='addItem' class ="glass" type = 'submit' style={{margin:'10px'}}>Add Item</button>
                     
-                    <button id='login' class='glass' type="submit" style={{margin:'10px'}}>Login</button>
-
+                    <button id='login' class='glass' onClick={handleLogin} style={{margin:'10px'}}>Login</button>
                     <button id ='createAccount' class="glass" onClick={handleCreateAccount} style={{margin:'10px'}}>Create Account</button>
                 </div>
             </nav>
