@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-
-
 export default function Forms(){
 
     const [name, setName] = useState("");
@@ -12,7 +10,7 @@ export default function Forms(){
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const handleClick = (e) => {
+    const handleSubmit = (e) => {
       e.preventDefault();
       if(name === "" || email === "" || password === "" || confirmPassword === ""){
         alert("Please fill out all required fields.")
@@ -20,16 +18,10 @@ export default function Forms(){
       if(password !== confirmPassword){
         alert("Please enter the same password.")
       }
-      console.log(`Name: ${name}`);
-      console.log(`Company: ${company}`);
-      console.log(`Email: ${email}`);
-      console.log(`Password: ${password}`);
-      console.log(`Confirm Password: ${confirmPassword}`);
     }
  
-
     return(
-    <Form onSubmit={handleClick}>
+    <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formName" className="m-5">
         <Form.Label>Name: </Form.Label>
         <Form.Control type="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="John Doe"></Form.Control>

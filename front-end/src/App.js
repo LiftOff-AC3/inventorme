@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Registration from "./components/screens/Registration";
+import Registration from "./components/layout/Registration";
 import Landing from "./components/screens/Landing";
 import Login from "./components/screens/Login";
 
