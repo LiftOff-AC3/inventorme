@@ -12,8 +12,18 @@ export default function Forms(){
 
     const handleSubmit = (e) => {
       e.preventDefault();
+
+      const regexNameVerification = /^[A-Za-z\s]+$/;
+      const regexEmailVerification = /^(.+)@(.+)$/;
+
       if(name === "" || email === "" || password === "" || confirmPassword === ""){
         alert("Please fill out all required fields.")
+      }
+      if(!regexNameVerification.test(name)){
+        alert("Please enter valid name.")
+      }
+      if(!regexEmailVerification.test(email)){
+        alert("Please enter valid email address.")
       }
       if(password !== confirmPassword){
         alert("Please enter the same password.")
