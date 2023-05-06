@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Registration from "./components/screens/Registration";
-import Landing from "./components/screens/Landing";
-import Login from "./components/screens/Login";
+import Registration from "./components/layout/SignUp";
+import Landing from "./components/layout/Landing";
+import Login from "./components/layout/LoginPage";
 
 //TODO: add either hooks or booleans to show or hide certain components based on button clicked JY 
 function App() {

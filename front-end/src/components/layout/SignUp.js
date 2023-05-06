@@ -29,6 +29,8 @@ export default function Forms(){
  
 
     return(
+    <div className="SignUp">
+    <h1 className="m-5 text-center" >Sign Up</h1>
     <Form onSubmit={handleClick}>
       <Form.Group controlId="formName" className="m-5">
         <Form.Label>Name: </Form.Label>
@@ -54,5 +56,6 @@ export default function Forms(){
         Submit
       </Button>
     </Form>
+    </div>
   )
 }

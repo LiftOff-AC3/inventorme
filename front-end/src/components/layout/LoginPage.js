@@ -18,6 +18,7 @@ export default function Login(){
 
     return(
     <div className="Login">
+    <h1 className="m-5 text-center" >Log In</h1>
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formEmail" className="m-5">
         <Form.Label>Email: </Form.Label>
