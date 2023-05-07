@@ -7,7 +7,7 @@ test('renders Login component without crashing', () => {
 });
 test('renders empty email and password inputs', () => {
   const { getByLabelText } = render(<Login />);
-  expect(getByLabelText('Email:')).toHaveValue('');git checkout
+  expect(getByLabelText('Email:')).toHaveValue('');
   expect(getByLabelText('Password:')).toHaveValue('');
 });
 test('updates email input correctly', () => {
@@ -42,3 +42,12 @@ test('handleSubmit function is called when Submit button is clicked', () => {
     Login.prototype.handleSubmit = function() {  handleSubmitMock() };
 
 });
+test('should encrypt and compare the password', () => {
+    const { getByLabelText } = render(<Login />);
+    const passwordInput = getByLabelText('Password:');
+    fireEvent.change(passwordInput, { target: { value: 'password123' } });
+    const bcrypt = require('bcrypt');
+    const salt = '$2a$1+3Dp9pD_ow=KgQRruBvBL6u';
+    const hashedPassword = bcrypt.hashSync('password123', salt);
+    expect(bcrypt.compareSync('password123', hashedPassword)).toBe(true);
+ });

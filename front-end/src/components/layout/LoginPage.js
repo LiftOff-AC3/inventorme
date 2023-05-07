@@ -7,13 +7,17 @@ export default function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-
   function validateForm() {
     return email.length > 0 && password.length > 0;
 
   }
    function handleSubmit(event) {
         event.preventDefault();
+
+        const bcrypt = require('bcrypt');
+        const salt = bcrypt.genSaltSync(10);
+        const hashedPassword = bcrypt.hashSync(password, salt);
+
    }
 
     return(
