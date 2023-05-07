@@ -11,8 +11,21 @@ export default function Forms(){
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
+
+      try{
+        await axios.post("http://localhost:8080/registration",{
+          name:name,
+          company:company,
+          email:email,
+          password:password,
+          confirmPassword:confirmPassword
+        });
+        alert("Registration Succefully")
+      }catch(err){
+        alert(err);
+      }
 
       const regexNameVerification = /^[A-Za-z\s]+$/;
       const regexEmailVerification = /^(.+)@(.+)$/;
