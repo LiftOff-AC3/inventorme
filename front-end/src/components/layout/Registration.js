@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import axios from "axios";
 
 export default function Forms(){
 
@@ -19,13 +20,13 @@ export default function Forms(){
       if(name === "" || email === "" || password === "" || confirmPassword === ""){
         alert("Please fill out all required fields.")
       }
-      if(!regexNameVerification.test(name)){
+      else if(!regexNameVerification.test(name)){
         alert("Please enter valid name.")
       }
-      if(!regexEmailVerification.test(email)){
+      else if(!regexEmailVerification.test(email)){
         alert("Please enter valid email address.")
       }
-      if(password !== confirmPassword){
+      else if(password !== confirmPassword){
         alert("Please enter the same password.")
       }
     }
