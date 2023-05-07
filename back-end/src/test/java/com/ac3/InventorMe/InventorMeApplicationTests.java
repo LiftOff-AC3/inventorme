@@ -1,10 +1,10 @@
-package com.liftoffac3.inventorme;
+package com.ac3.InventorMe;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class InventormeApplicationTests {
+class InventorMeApplicationTests {
 
 	@Test
 	void contextLoads() {
