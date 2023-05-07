@@ -7,7 +7,7 @@ test('renders Login component without crashing', () => {
 });
 test('renders empty email and password inputs', () => {
   const { getByLabelText } = render(<Login />);
-  expect(getByLabelText('Email:')).toHaveValue('');git checkout
+  expect(getByLabelText('Email:')).toHaveValue('');
   expect(getByLabelText('Password:')).toHaveValue('');
 });
 test('updates email input correctly', () => {
