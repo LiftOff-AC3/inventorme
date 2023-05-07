@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
-
+import axios from "axios";
 
 export default function Forms(){
 
@@ -12,24 +11,41 @@ export default function Forms(){
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const handleClick = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
+
+      try{
+        await axios.post("http://localhost:8080/registration",{
+          name:name,
+          company:company,
+          email:email,
+          password:password,
+          confirmPassword:confirmPassword
+        });
+        alert("Registration Succefully")
+      }catch(err){
+        alert(err);
+      }
+
+      const regexNameVerification = /^[A-Za-z\s]+$/;
+      const regexEmailVerification = /^(.+)@(.+)$/;
+
       if(name === "" || email === "" || password === "" || confirmPassword === ""){
         alert("Please fill out all required fields.")
       }
-      if(password !== confirmPassword){
+      else if(!regexNameVerification.test(name)){
+        alert("Please enter valid name.")
+      }
+      else if(!regexEmailVerification.test(email)){
+        alert("Please enter valid email address.")
+      }
+      else if(password !== confirmPassword){
         alert("Please enter the same password.")
       }
-      console.log(`Name: ${name}`);
-      console.log(`Company: ${company}`);
-      console.log(`Email: ${email}`);
-      console.log(`Password: ${password}`);
-      console.log(`Confirm Password: ${confirmPassword}`);
     }
  
-
     return(
-    <Form onSubmit={handleClick}>
+    <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formName" className="m-5">
         <Form.Label>Name: </Form.Label>
         <Form.Control type="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="John Doe"></Form.Control>
