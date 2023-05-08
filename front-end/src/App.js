@@ -5,7 +5,6 @@ import Registration from "./components/layout/SignUp";
 import Landing from "./components/layout/Landing";
 import Login from "./components/layout/LoginPage";
 
-//TODO: add either hooks or booleans to show or hide certain components based on button clicked JY 
 function App() {
 
   const [showLogin, setShowLogin] = useState(false)
