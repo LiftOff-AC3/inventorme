@@ -2,26 +2,17 @@ package com.ac3.InventorMe.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import java.util.UUID;
 
 @Entity
 public class RegistrationData {
-
     @Id
-    @GeneratedValue
-    private int id;
+    private UUID uuid = UUID.randomUUID();
     private String name;
     private String company;
     private String email;
     private String password;
     private String confirmPassword;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -61,5 +52,13 @@ public class RegistrationData {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 }
