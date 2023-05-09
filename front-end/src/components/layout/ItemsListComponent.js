@@ -1,28 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function ItemsListComponent() {
 
-    const [items, setItems] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    //    useEffect(() => {
-    //        setLoading(true);
-    //
-    //        fetch('items')
-    //        .then(response => response.json())
-    //        .then(data => {
-    //            setItems(data);
-    //            setLoading(false);
-    //        })
-    //    }, []);
-    //
-    //    if (loading) {
-    //        return <p>loading...</p>;
-    //    }
+    React.useEffect(() => {
+        axios.get("http://localhost:8080/items")
+            .then((response) => {
+                setItems(response.data)
+                console.log(response.data);
+            });
+    }, []);
+
+    if (!items) return null;
 
     return (
         <div className='container'>
-            <h2>Items List</h2>
             <table className='table table-boarder table-striped'>
                 <thead>
                     <th> Item ID </th>
@@ -31,38 +27,16 @@ export default function ItemsListComponent() {
                     <th> Description </th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td> item.id </td>
-                        <td> item.itemName </td>
-                        <td> item.itemQuantity </td>
-                        <td> item.description </td>
-                    </tr>
+                    {items && items.length > 0 && items.map(item => (
+                        <tr key={item.id}>                        
+                            <td> {item.id} </td>
+                            <td> {item.itemName} </td>
+                            <td> {item.itemQuantity} </td>
+                            <td> {item.description} </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
     )
 }
-//        <div className='container'>
-//            <h2>Items List</h2>
-//            <table className='table table-boardered table-striped'>
-//                <thead>
-//                    <th> Item ID </th>
-//                    <th> Name </th>
-//                    <th> Quantity </th>
-//                    <th> Description </th>
-//                </thead>
-//                <tbody>
-//                    {
-//                        this.state.items.map(
-//                            item =>
-//                                <tr key={item.id}>
-//                                    <td> {item.id} </td>
-//                                    <td> {item.itemName} </td>
-//                                    <td> {item.itemQuantity} </td>
-//                                    <td> {item.description} </td>
-//                                </tr>
-//                        )
-//                    }
-//                </tbody>
-//            </table>
-//        </div>
