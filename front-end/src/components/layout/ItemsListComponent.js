@@ -2,26 +2,27 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function ItemsListComponent() {
-
     const [items, setItems] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
         axios.get("http://localhost:8080/items")
             .then((response) => {
                 setItems(response.data)
-                console.log(response.data);
+            })
+            .catch(error => {
+                setError(error);
             });
     }, []);
 
-    if (!items) return null;
+    if (error) return 'Error: $ {error.message}';
+    if (!items) return 'No items';
 
     return (
         <div className='container'>
             <table className='table table-boarder table-striped'>
                 <thead>
-                    <th> Item ID </th>
+                    <th> ID </th>
                     <th> Name </th>
                     <th> Quantity </th>
                     <th> Description </th>
