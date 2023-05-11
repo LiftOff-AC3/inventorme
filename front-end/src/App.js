@@ -2,9 +2,9 @@ import { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registration from "./components/layout/Registration";
-import Landing from "./components/screens/Landing";
-import Login from "./components/screens/Login";
-import ItemsList from "./components/screens/ItemsList";
+import Landing from "./components/layout/Landing";
+import Login from "./components/layout/LoginPage";
+import ItemsList from "./components/layout/ItemsListComponent";
 
 function App() {
 

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'; 
 import axios from 'axios';
 
 export default function ItemsListComponent() {
     const [items, setItems] = useState(null);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
+    useEffect(() => { 
         axios.get("http://localhost:8080/items")
             .then((response) => {
                 setItems(response.data)
@@ -29,7 +29,7 @@ export default function ItemsListComponent() {
                 </thead>
                 <tbody>
                     {items && items.length > 0 && items.map(item => (
-                        <tr key={item.id}>                        
+                        <tr key={item.id}>
                             <td> {item.id} </td>
                             <td> {item.itemName} </td>
                             <td> {item.itemQuantity} </td>
