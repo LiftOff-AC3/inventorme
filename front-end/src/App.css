@@ -1,17 +1,40 @@
-ul {
-list-style-type: none;
+.landing-nav {
 display: flex;
-justify-content: space-between;
+justify-content: flex-end;
 align-content: center;
 }
-
-#right-nav {
+.landing-nav-link {
+margin: .5rem;
+}
+.login-nav,
+.register-nav,
+.add-nav{
 display: flex;
-flex-flow: row wrap;
-justify-content: flex-end;
-margin-right: 1rem;
+flex-direction: row;
+justify-content: space-between;
+}
+.login-nav-link,
+.register-nav-link,
+.add-nav-link{
+margin: .5rem;
 }
 
-#right-nav li {
-margin: auto 1em;
+#landing-page {
+display: flex;
+justify-content: space-evenly;
+}
+
+@media(max-width: 800px) {
+#landing-page {
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center
+}
+#logo {
+max-width: 80%;
+height: auto;
+
+}
+
 }
