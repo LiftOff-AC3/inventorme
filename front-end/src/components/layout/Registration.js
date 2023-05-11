@@ -22,7 +22,7 @@ export default function Forms(){
           password:password,
           confirmPassword:confirmPassword
         });
-        alert("Registration Succefully")
+        alert("Registration Success!")
       }catch(err){
         alert(err);
       }
@@ -45,6 +45,8 @@ export default function Forms(){
     }
  
     return(
+    <div>
+    <h1 class="text-center">Register</h1>
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formName" className="m-5">
         <Form.Label>Name: </Form.Label>
@@ -70,5 +72,6 @@ export default function Forms(){
         Submit
       </Button>
     </Form>
+    </div>
   )
 }
