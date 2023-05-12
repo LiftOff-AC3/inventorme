@@ -1,3 +1,13 @@
+#landing-page {
+display: flex;
+justify-content: space-evenly;
+height: 100vh;
+}
+nav {
+position: fixed;
+top: 0;
+width: 100%;
+}
 .landing-nav {
 display: flex;
 justify-content: flex-end;
@@ -17,11 +27,6 @@ justify-content: space-between;
 .register-nav-link,
 .add-nav-link{
 margin: .5rem;
-}
-
-#landing-page {
-display: flex;
-justify-content: space-evenly;
 }
 
 @media(max-width: 800px) {

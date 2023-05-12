@@ -46,7 +46,7 @@ export default function Forms() {
   };
 
   return (
-    <div>
+    <div id="registration-page">
       <h1 class="text-center">Register</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formName" className="m-5">
