@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Registration from "./components/layout/Registration";
 import Landing from "./components/layout/Landing";
 import Login from "./components/layout/LoginPage";
-import ItemsList from "./components/layout/ItemsListComponent";
+import ItemsList from "./components/layout/ItemsList";
 
 function App() {
 
