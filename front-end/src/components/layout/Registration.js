@@ -3,15 +3,14 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 
-export default function Forms() {
-  const [name, setName] = useState("");
-  const [company, setCompany] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+export default function Forms(){
+    const [name, setName] = useState("");
+    const [company, setCompany] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+  
+    const handleSubmit = async (e) => {
 
     try {
       await axios.post("http://localhost:8080/registration", {
