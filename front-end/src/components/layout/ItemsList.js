@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Table from 'react-bootstrap/Table'
 
 export default function ItemsList() {
 	const [items, setItems] = useState(null);
@@ -20,7 +21,7 @@ export default function ItemsList() {
 
 	return (
 		<>
-			<div data-testid="items-list">
+			<div id='items-view-page'>
 				<h1 className="m-5 text-center">Items List</h1>
 			</div>
 			<div className='item-list-table m-5'>
