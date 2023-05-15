@@ -5,12 +5,12 @@ import {
 } from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Item from "./components/layout/CreateItem";
-import ItemsList from "./components/layout/ItemsList";
-import Registration from "./components/layout/Registration";
-import Landing from "./components/layout/Landing";
-import Login from "./components/layout/Login";
-import Navigation from "./components/layout/Navigation"
+import Item from "./components/CreateItem";
+import ItemsList from "./components/ItemsList";
+import Registration from "./components/Registration";
+import Landing from "./components/Landing";
+import Login from "./components/Login";
+import Navigation from "./components/Navigation"
 
 function App() {
   return (

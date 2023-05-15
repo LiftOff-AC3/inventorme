@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Table from 'react-bootstrap/Table'
 
 export default function ItemsList() {
 	const [items, setItems] = useState(null);
