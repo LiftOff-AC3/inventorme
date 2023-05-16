@@ -19,11 +19,9 @@ export default function ItemsList() {
 	if (!items) return 'No items';
 
 	return (
-		<>
-			<div id='items-view-page'>
-				<h1 className="m-5 text-center">Items List</h1>
-			</div>
-			<div className='item-list-table m-5'>
+	<>
+		<h1 className="m-5 text-center">Items List</h1>
+		<div className='item-list-table m-5'>
 			<table className='table table-bordered table-striped '>
 				<thead>
 					<tr className='table-dark text-center'>
@@ -44,7 +42,7 @@ export default function ItemsList() {
 					))}
 				</tbody>
 			</table>
-			</div>
+		</div>
 		</>
 	)
 }
