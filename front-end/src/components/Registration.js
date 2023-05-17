@@ -9,13 +9,21 @@ export default function Registration() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-  
+
+    function validateForm() {
+        if (password !== confirmPassword) {
+          return false}
+       return true
+    }
+
     const handleSubmit = async (e) => {
 
     try {
       await axios.post("http://localhost:8080/registration", {
         name: name,
         company: company,
+        email: email,
+        password: password,
         confirmPassword: confirmPassword
       });
       await axios.post("http://localhost:8080/login", {
@@ -25,24 +33,6 @@ export default function Registration() {
       alert("Registration Success!");
     } catch (err) {
       alert(err);
-    }
-
-    const regexNameVerification = /^[A-Za-z\s]+$/;
-    const regexEmailVerification = /^(.+)@(.+)$/;
-
-    if (
-      name === "" ||
-      email === "" ||
-      password === "" ||
-      confirmPassword === ""
-    ) {
-      alert("Please fill out all required fields.");
-    } else if (!regexNameVerification.test(name)) {
-      alert("Please enter valid name.");
-    } else if (!regexEmailVerification.test(email)) {
-      alert("Please enter valid email address.");
-    } else if (password !== confirmPassword) {
-      alert("Please enter the same password.");
     }
   };
 
@@ -95,7 +85,7 @@ export default function Registration() {
             placeholder="*********"
           ></Form.Control>
         </Form.Group>
-        <Button className="mx-5" variant="primary" type="submit">
+        <Button className="mx-5" variant="primary" type="submit" disabled={!validateForm()}>
           Submit
         </Button>
       </Form>
