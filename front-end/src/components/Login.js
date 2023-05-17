@@ -1,16 +1,32 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
-  }
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    try {
+          const response = await axios.post("http://localhost:8080/submit", {
+            email: email,
+            password: password,
+          });
+
+          if (response.status === 200) {
+            navigate("/items");
+          }
+        } catch (err) {
+          if (err.response && err.response.status === 401) {
+             alert("Login failed. Please check your email and password.");
+             } else {
+             alert("An error occurred. Please try again later.");
+            }
+        }
   }
 
   return (
@@ -24,6 +40,7 @@ export default function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="email@gmail.com"
+            required
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="formPassword" className="m-5">
@@ -33,6 +50,7 @@ export default function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="*********"
+            required
           ></Form.Control>
         </Form.Group>
         <Button
@@ -40,7 +58,6 @@ export default function Login() {
           className="mx-5"
           variant="primary"
           type="submit"
-          disabled={!validateForm()}
         >
           Submit
         </Button>

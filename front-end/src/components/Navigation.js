@@ -27,12 +27,6 @@ export default function Navigation() {
 						<Link class="landing-nav-link" to="/register" style={linkStyle}>
 							Register
 						</Link>
-						<Link class="landing-nav-link" to="/add" style={linkStyle}>
-							Add
-						</Link>
-						<Link class="landing-nav-link" to="/items" style={linkStyle}>
-							View Items
-						</Link>
 					</div>
 				)}
 
@@ -94,9 +88,14 @@ export default function Navigation() {
 								className="float-start"
 							></img>
 						</Link>
-						<Link class="add-nav-link" to="" style={linkStyle}>
-							Log Out
-						</Link>
+					   <div>
+                         <Link class="add-nav-link" to="/add" style={linkStyle}>
+                             Add
+                         </Link>
+                         <Link class="add-nav-link" to="" style={linkStyle}>
+                          Log Out
+                          </Link>
+                        </div>
 					</div>
 				)}
 			</div>
