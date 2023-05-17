@@ -16,9 +16,11 @@ export default function Registration() {
       await axios.post("http://localhost:8080/registration", {
         name: name,
         company: company,
-        email: email,
-        password: password,
         confirmPassword: confirmPassword
+      });
+      await axios.post("http://localhost:8080/login", {
+        email: email,
+        password: password
       });
       alert("Registration Success!");
     } catch (err) {
