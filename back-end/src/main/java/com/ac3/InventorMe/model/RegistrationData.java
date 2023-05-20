@@ -11,7 +11,6 @@ public class RegistrationData {
     private String company;
     private String email;
     private String password;
-    private String confirmPassword;
 
     public String getName() {
         return name;
@@ -45,13 +44,6 @@ public class RegistrationData {
         this.password = password;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
 
     public UUID getUuid() {
         return uuid;
