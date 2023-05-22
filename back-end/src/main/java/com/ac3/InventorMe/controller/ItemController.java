@@ -16,9 +16,27 @@ public class ItemController {
     @Autowired
     private ItemRepository itemRepository;
 
+    public ItemController(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
+    }
+
     @PostMapping("/item")
     Item newItem(@RequestBody Item newItem){
         return itemRepository.save(newItem);
+    }
+
+    @PutMapping("/items/{id}")
+     Item updateItem(@RequestBody Item newItem, @PathVariable int id){
+         return itemRepository.findById(id)
+                 .map(item -> {
+                     item.setItemName(newItem.getItemName());
+                     item.setItemQuantity(newItem.getItemQuantity());
+                     item.setDescription(newItem.getDescription());
+                     return itemRepository.save(item);
+                 })
+                 .orElseGet(() -> {
+                     return itemRepository.save(newItem);
+                 });
     }
 
     @GetMapping("/items")
