@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Table from 'react-bootstrap/Table'
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 export default function ItemsList() {
 	const [items, setItems] = useState(null);
 	const [error, setError] = useState(null);
+	const [search, setSearch] = useState('');
+	console.log(search)
 
 	useEffect(() => {
 		axios.get("http://localhost:8080/items")
@@ -23,6 +26,11 @@ export default function ItemsList() {
 		<>
 			<div id='items-view-page'>
 				<h1 className="m-5 text-center">Items List</h1>
+				<Form>
+					<InputGroup>
+						<Form.Control onChange={(e) => setSearch(e.target.value.toLowerCase())} placeholder=' Search Items...' />
+					</InputGroup>
+				</Form>
 			</div>
 			<div className='item-list-table m-5'>
 			<table className='table table-bordered table-striped '>
@@ -35,7 +43,9 @@ export default function ItemsList() {
 					</tr>
 				</thead>
 				<tbody>
-					{items && items.length > 0 && items.map(item => (
+					{items.filter((item) => {
+						return search.toLowerCase() === '' ? item : item.itemName.toLowerCase().includes(search);
+					}).map(item => (
 						<tr key={item.id}>
 							<td> {item.id} </td>
 							<td> {item.itemName} </td>
