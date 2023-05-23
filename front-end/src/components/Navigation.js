@@ -4,6 +4,7 @@ import {
 	useLocation
 } from "react-router-dom";
 
+
 export default function Navigation() {
 	const location = useLocation();
 	const isRegistrationPage = location.pathname === "/register";
