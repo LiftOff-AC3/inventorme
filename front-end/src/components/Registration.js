@@ -11,6 +11,13 @@ export default function Registration() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const CryptoJS = require("crypto-js");
+  const salt = CryptoJS.lib.WordArray.random(16);
+  const hashedPassword = CryptoJS.PBKDF2(password, salt, {
+    keySize: 512 / 32,
+    iterations: 1000,
+  }).toString();
+
   function validateForm() {
     const regexNameVerification = /^[A-Za-z\s]+$/;
     const regexEmailVerification = /^(.+)@(.+)$/;
