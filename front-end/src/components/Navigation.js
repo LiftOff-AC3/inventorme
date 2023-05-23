@@ -89,13 +89,13 @@ export default function Navigation() {
 							></img>
 						</Link>
 					   <div>
-                         <Link className="add-nav-link" to="/add" style={linkStyle}>
-                             Add
-                         </Link>
-                         <Link className="add-nav-link" to="" style={linkStyle}>
-                          Log Out
-                          </Link>
-                        </div>
+               <Link className="add-nav-link" to="/add" style={linkStyle}>
+                 Add
+               </Link>
+               <Link className="add-nav-link" to="" style={linkStyle}>
+                 Log Out
+               </Link>
+               </div>
 					</div>
 				)}
 			</div>
