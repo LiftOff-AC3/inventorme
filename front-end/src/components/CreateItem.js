@@ -3,29 +3,20 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateItem() {
-
   const navigate = useNavigate();
-
   const [item, setItem] = useState({
     itemName: "",
     itemQuantity: "",
-    description: ""
+    description: "",
   });
 
   const onChangeItem = (e) => {
-    setItem({ ...item, [e.target.name]: e.target.value })
-  }
-
+    setItem({ ...item, [e.target.name]: e.target.value });
+  };
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post("http://localhost:8080/item", item)
-        .then(navigate("/items"));
-    }
-    catch (err) {
-      alert(err);
-    }
-  }
+    await axios.post("http://localhost:8080/item", item);
+  };
 
   return (
     <div className="container">
@@ -37,7 +28,8 @@ export default function CreateItem() {
               <label htmlFor="Name" className="form-label">
                 Item Name
               </label>
-              <input type={"text"}
+              <input
+                type={"text"}
                 className="form-control"
                 placeholder="Enter Item Name"
                 name="itemName"
@@ -50,7 +42,8 @@ export default function CreateItem() {
               <label htmlFor="Quantity" className="form-label">
                 Quantity
               </label>
-              <input type={"text"}
+              <input
+                type={"text"}
                 className="form-control"
                 placeholder="Enter Quantity to Store"
                 name="itemQuantity"
@@ -63,7 +56,8 @@ export default function CreateItem() {
               <label htmlFor="description" className="form-label">
                 Description
               </label>
-              <input type={"text"}
+              <input
+                type={"text"}
                 className="form-control"
                 placeholder="Enter Brief Description of Item"
                 name="description"
@@ -71,13 +65,12 @@ export default function CreateItem() {
                 onChange={onChangeItem}
               />
             </div>
-            <button type="submit"
-              className="btn btn-outline-primary">
+            <button type="submit" className="btn btn-outline-primary">
               Submit
             </button>
           </form>
         </div>
       </div>
     </div>
-  )
+  );
 }
