@@ -11,6 +11,13 @@ export default function Registration() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const CryptoJS = require("crypto-js");
+  const salt = CryptoJS.lib.WordArray.random(16);
+  const hashedPassword = CryptoJS.PBKDF2(password, salt, {
+    keySize: 512 / 32,
+    iterations: 1000,
+  }).toString();
+
   function validateForm() {
     const regexNameVerification = /^[A-Za-z\s]+$/;
     const regexEmailVerification = /^(.+)@(.+)$/;
@@ -41,8 +48,7 @@ export default function Registration() {
           name: name,
           company: company,
           email: email,
-          password: password,
-          confirmPassword: confirmPassword,
+          password: hashedPassword,
         })
         .then(navigate("/items"));
       await axios.post("http://localhost:8080/login", {
