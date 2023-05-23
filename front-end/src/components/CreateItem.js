@@ -13,7 +13,6 @@ export default function CreateItem() {
   const onChangeItem = (e) => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
-
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:8080/item", item);
