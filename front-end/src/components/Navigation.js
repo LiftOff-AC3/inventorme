@@ -20,19 +20,19 @@ export default function Navigation() {
 		<nav>
 			<div>
 				{isLandingPage && (
-					<div class="landing-nav">
-						<Link class="landing-nav-link" to="/login" style={linkStyle}>
+					<div className="landing-nav">
+						<Link className="landing-nav-link" to="/login" style={linkStyle}>
 							Login
 						</Link>
-						<Link class="landing-nav-link" to="/register" style={linkStyle}>
+						<Link className="landing-nav-link" to="/register" style={linkStyle}>
 							Register
 						</Link>
 					</div>
 				)}
 
 				{isLoginPage && (
-					<div class="login-nav">
-						<Link class="login-nav-link" to="/" style={linkStyle}>
+					<div className="login-nav">
+						<Link className="login-nav-link" to="/" style={linkStyle}>
 							<img
 								id="logo"
 								src="logo_transparent.png"
@@ -40,14 +40,14 @@ export default function Navigation() {
 								className="float-start"
 							></img>
 						</Link>
-						<Link class="login-nav-link" to="/register" style={linkStyle}>
+						<Link className="login-nav-link" to="/register" style={linkStyle}>
 							Register
 						</Link>
 					</div>
 				)}
 
 				{isRegistrationPage && (
-					<div class="register-nav">
+					<div className="register-nav">
 						<Link class="register-nav-link" to="/" style={linkStyle}>
 							<img
 								id="logo"
@@ -56,15 +56,15 @@ export default function Navigation() {
 								className="float-start"
 							></img>
 						</Link>
-						<Link class="register-nav-link" to="/login" style={linkStyle}>
+						<Link className="register-nav-link" to="/login" style={linkStyle}>
 							Login
 						</Link>
 					</div>
 				)}
 
 				{isAddItemPage && (
-					<div class="add-nav">
-						<Link class="add-nav-link" to="/" style={linkStyle}>
+					<div className="add-nav">
+						<Link className="add-nav-link" to="/" style={linkStyle}>
 							<img
 								id="logo"
 								src="logo_transparent.png"
@@ -72,15 +72,15 @@ export default function Navigation() {
 								className="float-start"
 							></img>
 						</Link>
-						<Link class="add-nav-link" to="" style={linkStyle}>
+						<Link className="add-nav-link" to="" style={linkStyle}>
 							Log Out
 						</Link>
 					</div>
 				)}
 
 				{isItemsViewPage && (
-					<div class="add-nav">
-						<Link class="add-nav-link" to="/" style={linkStyle}>
+					<div className="add-nav">
+						<Link className="add-nav-link" to="/" style={linkStyle}>
 							<img
 								id="logo"
 								src="logo_transparent.png"
@@ -89,10 +89,10 @@ export default function Navigation() {
 							></img>
 						</Link>
 					   <div>
-                         <Link class="add-nav-link" to="/add" style={linkStyle}>
+                         <Link className="add-nav-link" to="/add" style={linkStyle}>
                              Add
                          </Link>
-                         <Link class="add-nav-link" to="" style={linkStyle}>
+                         <Link className="add-nav-link" to="" style={linkStyle}>
                           Log Out
                           </Link>
                         </div>
