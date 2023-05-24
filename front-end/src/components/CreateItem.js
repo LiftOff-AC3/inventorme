@@ -8,6 +8,7 @@ export default function CreateItem() {
     itemName: "",
     itemQuantity: "",
     description: "",
+    location: ""
   });
   
   const onChangeItem = (e) => {
@@ -75,6 +76,18 @@ export default function CreateItem() {
                 placeholder="Enter Brief Description of Item"
                 name="description"
                 value={item.description}
+                onChange={onChangeItem}
+              />
+              </div>
+              <div className="text-center mb-3">
+              <label htmlFor="location" className="form-label">
+                Location
+              </label>
+              <input type={"text"}
+                className="form-control"
+                placeholder="Where is this item located"
+                name="location"
+                value={item.location}
                 onChange={onChangeItem}
               />
             </div>

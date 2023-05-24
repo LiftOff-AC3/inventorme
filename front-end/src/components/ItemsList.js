@@ -20,8 +20,7 @@ export default function ItemsList() {
   }
 	}).then((response) => {
 			setItems(response.data)
-		})
-		.catch(error => {
+		}).catch(error => {
 			setError(error);
 		});
 	}, [error]);
@@ -45,8 +44,7 @@ export default function ItemsList() {
           })
         )
       );
-      axios
-        .get("/items")
+      axios.get("/items")
         .then((response) => {
           setItems(response.data);
         })
@@ -58,29 +56,29 @@ export default function ItemsList() {
       alert("Error deleting items", error);
     }
   }
-  return (
-    <>
-      <h1 className="m-5 text-center">Items List</h1>
-      <div className="text-center">
-        <input
+	return (
+		<body class="view-item-page">
+		<h1  id='item-header' className="m-5 text-center">Items List</h1>
+    <input
+          className="text-center"
           type="text"
           onChange={(e) => setSearch(e.target.value.toLowerCase())}
           placeholder="Search for Item..."
         />
-      </div>
-      <div className="item-list-table m-5">
-        <button
-          onClick={handleDelete}
-          type="button"
-          class="btn btn-secondary btn-sm btn-danger"
-        >
-          Delete
-        </button>
-        <table className="table table-bordered table-striped ">
+		<div className='item-list-table m-5'>
+		  <button id='item-delete-button'
+        onClick={handleDelete}
+        type="button"
+        class="btn btn-secondary btn-sm btn-danger"
+      >
+        Delete
+		  </button>
+      <div id='item-table'>
+        <table className='table table-bordered'>
           <thead>
-            <tr className="table-dark text-center">
+            <tr className='table-light text-center'>
               <td> Delete </td>
-              <td> Id </td>
+              <td> ID </td>
               <td> Name </td>
               <td> Quantity </td>
               <td> Description </td>
@@ -88,56 +86,56 @@ export default function ItemsList() {
             </tr>
           </thead>
           <tbody>
-            {items
-              .filter((item) => {
-                return search.toLowerCase() === ""
-                  ? item
-                  : item.itemName.toLowerCase().includes(search) ||
-                    item.description.toLowerCase().includes(search);
-              })
-              .map((item) => (
-                <tr key={item.id}>
-                  <td>
-                    <label>
-                      <input
-                        type="checkbox"
-                        onChange={(e) => handleCheckboxSelect(e, item.id)}
-                        checked={selectedItems.includes(item.id)}
-                      />
-                    </label>
-                  </td>
-                  <td> {item.id} </td>
-                  <td> {item.itemName} </td>
-                  <td> {item.itemQuantity} </td>
-                  <td> {item.description} </td>
-                  <td>
-                    {!(open.update && open.id === item.id) && (
-                      <button
-                        className="viewItemButton"
-                        onClick={() => {
-                          setOpen({ ...open, update: true, id: item.id });
-                        }}
-                      >
-                        Edit
-                      </button>
-                    )}
-                    {open.update && open.id === item.id && (
-                      <UpdateItem
-                        id={open.id}
-                        onClose={handleClose}
-                        toEditTitle={item.itemName}
-                        toEditItemQuantity={item.itemQuantity}
-                        toEditDescription={item.description}
-                        item={item.id}
-                      />
-                    )}
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+              {items
+                .filter((item) => {
+                  return search.toLowerCase() === ""
+                    ? item
+                    : item.itemName.toLowerCase().includes(search) ||
+                      item.description.toLowerCase().includes(search);
+                })
+                .map((item) => (
+                  <tr key={item.id}>
+                    <td>
+                      <label>
+                        <input
+                          type="checkbox"
+                          onChange={(e) => handleCheckboxSelect(e, item.id)}
+                          checked={selectedItems.includes(item.id)}
+                        />
+                      </label>
+                    </td>
+                    <td> {item.id} </td>
+                    <td> {item.itemName} </td>
+                    <td> {item.itemQuantity} </td>
+                    <td> {item.description} </td>
+                    <td>
+                      {!(open.update && open.id === item.id) && (
+                        <button
+                          className="viewItemButton"
+                          onClick={() => {
+                            setOpen({ ...open, update: true, id: item.id });
+                          }}
+                        >
+                          Edit
+                        </button>
+                      )}
+                      {open.update && open.id === item.id && (
+                        <UpdateItem
+                          id={open.id}
+                          onClose={handleClose}
+                          toEditTitle={item.itemName}
+                          toEditItemQuantity={item.itemQuantity}
+                          toEditDescription={item.description}
+                          item={item.id}
+                        />
+                      )}
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </>
+    </body>
   );
-
 }

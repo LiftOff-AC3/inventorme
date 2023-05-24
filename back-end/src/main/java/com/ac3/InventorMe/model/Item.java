@@ -13,6 +13,7 @@ public class Item {
     private String description;
     private int itemQuantity;
     private UUID userId;
+    private String location;
 
     public int getId() {
         return id;
@@ -52,5 +53,11 @@ public class Item {
 
     public void setUserId(UUID userId) {
         this.userId = userId;
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation() {
+        this.location = location;
     }
 }
