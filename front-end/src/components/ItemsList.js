@@ -31,6 +31,7 @@ export default function ItemsList() {
         <table className="table table-bordered table-striped ">
           <thead>
             <tr className="table-dark text-center">
+              <td> Id </td>
               <td> Name </td>
               <td> Quantity </td>
               <td> Description </td>
@@ -41,6 +42,7 @@ export default function ItemsList() {
               items.length > 0 &&
               items.map((item) => (
                 <tr key={item.id}>
+                  <td> {item.id} </td>
                   <td> {item.itemName} </td>
                   <td> {item.itemQuantity} </td>
                   <td> {item.description} </td>
