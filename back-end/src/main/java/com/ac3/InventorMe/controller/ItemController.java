@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.Optional;
 import java.util.List;
+
 
 @RestController
 @CrossOrigin("http://localhost:3000")
@@ -25,7 +27,7 @@ public class ItemController {
         return itemRepository.save(newItem);
     }
 
-    @PutMapping("/items/{id}")
+    @PutMapping("/item/{id}")
      public ResponseEntity<String> updateItem(@RequestBody Item editItem, @PathVariable("id") int id){
          Optional<Item> optionalItem = itemRepository.findById(id);
                  if(optionalItem.isPresent()){
@@ -38,7 +40,7 @@ public class ItemController {
                  }
                  else{
                      return ResponseEntity.notFound().build();
-                 });
+                 }
     }
 
     @GetMapping("/items")
