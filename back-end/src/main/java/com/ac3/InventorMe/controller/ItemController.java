@@ -27,8 +27,9 @@ public class ItemController {
 
     @PutMapping("/items/{id}")
      public ResponseEntity<String> updateItem(@RequestBody Item editItem, @PathVariable("id") int id){
-         Item existingItem = itemRepository.findById(id);
-                 if(existingItem != null){
+         Optional<Item> optionalItem = itemRepository.findById(id);
+                 if(optionalItem.isPresent()){
+                     Item existingItem = optionalItem.get();
                      existingItem.setItemName(editItem.getItemName());
                      existingItem.setItemQuantity(editItem.getItemQuantity());
                      existingItem.setDescription(editItem.getDescription());
