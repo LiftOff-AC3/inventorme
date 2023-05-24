@@ -10,19 +10,26 @@ export default function UpdateItem() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/items/" + id)
-      .then((res) => setEditItem(res.data))
-      .catch((err) => console.log(err));
+    const itemId = parseInt(id);
+
+    if (!isNaN(itemId)) {
+      axios
+        .get("http://localhost:8080/items/" + parseInt(id))
+        .then((res) => setEditItem(res.data))
+        .catch((err) => console.log(err));
+    }
   }, [id]);
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.put("http://localhost:8080/items/" + id, editItem).then((res) => {
-      alert("item updated successfully");
+    try {
+      await axios.put("http://localhost:8080/items/" + id, editItem);
+      alert("Item updated successfully");
       navigate("/items");
-    });
-  }
+    } catch (err) {
+      alert("Error updating item:", err);
+    }
+  };
 
   return (
     <div>

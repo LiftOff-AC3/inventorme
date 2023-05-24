@@ -8,18 +8,15 @@ export default function CreateItem() {
     itemName: "",
     itemQuantity: "",
     description: "",
-    description: "",
   });
 
   const onChangeItem = (e) => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
-    setItem({ ...item, [e.target.name]: e.target.value });
-  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:8080/item", item);
-  };
   };
 
   return (
@@ -32,8 +29,6 @@ export default function CreateItem() {
               <label htmlFor="Name" className="form-label">
                 Item Name
               </label>
-              <input
-                type={"text"}
               <input
                 type={"text"}
                 className="form-control"
@@ -50,8 +45,6 @@ export default function CreateItem() {
               </label>
               <input
                 type={"text"}
-              <input
-                type={"text"}
                 className="form-control"
                 placeholder="Enter Quantity to Store"
                 name="itemQuantity"
@@ -64,8 +57,6 @@ export default function CreateItem() {
               <label htmlFor="description" className="form-label">
                 Description
               </label>
-              <input
-                type={"text"}
               <input
                 type={"text"}
                 className="form-control"
@@ -82,6 +73,5 @@ export default function CreateItem() {
         </div>
       </div>
     </div>
-  );
   );
 }

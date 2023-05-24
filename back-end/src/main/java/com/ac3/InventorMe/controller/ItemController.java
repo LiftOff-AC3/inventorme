@@ -26,16 +26,17 @@ public class ItemController {
     }
 
     @PutMapping("/items/{id}")
-     Item updateItem(@RequestBody Item newItem, @PathVariable int id){
-         return itemRepository.findById(id)
-                 .map(item -> {
-                     item.setItemName(newItem.getItemName());
-                     item.setItemQuantity(newItem.getItemQuantity());
-                     item.setDescription(newItem.getDescription());
-                     return itemRepository.save(item);
-                 })
-                 .orElseGet(() -> {
-                     return itemRepository.save(newItem);
+     public ResponseEntity<String> updateItem(@RequestBody Item editItem, @PathVariable("id") int id){
+         Item existingItem = itemRepository.findById(id);
+                 if(existingItem != null){
+                     existingItem.setItemName(editItem.getItemName());
+                     existingItem.setItemQuantity(editItem.getItemQuantity());
+                     existingItem.setDescription(editItem.getDescription());
+                     itemRepository.save(existingItem);
+                     return ResponseEntity.ok("Item updated successfully!");
+                 }
+                 else{
+                     return ResponseEntity.notFound().build();
                  });
     }
 
