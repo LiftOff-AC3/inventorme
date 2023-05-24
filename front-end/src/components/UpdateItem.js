@@ -23,11 +23,16 @@ export default function UpdateItem() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:8080/items/" + id, editItem);
-      alert("Item updated successfully");
-      navigate("/items");
+      const itemId = parseInt(id);
+      if (!isNaN(itemId)) {
+        await axios.put("http://localhost:8080/items/" + id, editItem);
+        alert("Item updated successfully");
+        navigate("/items");
+      } else {
+        throw new Error("Invalid Id");
+      }
     } catch (err) {
-      alert("Error updating item:", err);
+      alert("Error updating item:", err.message);
     }
   };
 
