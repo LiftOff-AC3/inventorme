@@ -29,18 +29,16 @@ public class ItemController {
 
     @PutMapping("/item/{id}")
      public ResponseEntity<String> updateItem(@RequestBody Item editItem, @PathVariable("id") int id){
-         Optional<Item> optionalItem = itemRepository.findById(id);
-                 if(optionalItem.isPresent()){
-                     Item existingItem = optionalItem.get();
-                     existingItem.setItemName(editItem.getItemName());
-                     existingItem.setItemQuantity(editItem.getItemQuantity());
-                     existingItem.setDescription(editItem.getDescription());
-                     itemRepository.save(existingItem);
-                     return ResponseEntity.ok("Item updated successfully!");
-                 }
-                 else{
-                     return ResponseEntity.notFound().build();
-                 }
+        Item existingItem = itemRepository.findById(id).orElse(null);
+        if (existingItem != null) {
+            existingItem.setItemName(editItem.getItemName());
+            existingItem.setItemQuantity(editItem.getItemQuantity());
+            existingItem.setDescription(editItem.getDescription());
+            itemRepository.save(existingItem);
+            return ResponseEntity.ok("Item updated successfully!");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/items")
