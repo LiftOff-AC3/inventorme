@@ -9,28 +9,23 @@ export default function UpdateItem() {
   const [editItem, setEditItem] = useState({});
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const itemId = parseInt(id);
-
-    if (!isNaN(itemId)) {
-      axios
-        .get("http://localhost:8080/items/" + parseInt(id))
-        .then((res) => setEditItem(res.data))
-        .catch((err) => console.log(err));
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:8080/items/" + id)
+  //     .then((res) => setEditItem(res.data))
+  //     .catch((err) => console.log(err));
+  // }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const itemId = parseInt(id);
-      if (!isNaN(itemId)) {
-        await axios.put("http://localhost:8080/items/" + id, editItem);
-        alert("Item updated successfully");
-        navigate("/items");
-      } else {
-        throw new Error("Invalid Id");
-      }
+      await axios.put("http://localhost:8080/items/" + id, editItem, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      alert("Item updated successfully");
+      navigate("/items");
     } catch (err) {
       alert("Error updating item:", err.message);
     }
