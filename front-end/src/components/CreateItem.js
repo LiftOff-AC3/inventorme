@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateItem() {
+  const navigate = useNavigate();
   const [item, setItem] = useState({
     itemName: "",
     itemQuantity: "",
