@@ -14,7 +14,11 @@ export default function CreateItem() {
   };
 
   const onSubmit = async (e) => {
-    await axios.post("/item", item);
+    try {
+      await axios.post("/item", item).then(navigate("/items"));
+    } catch (err) {
+      alert(err);
+    }
   };
 
   return (
