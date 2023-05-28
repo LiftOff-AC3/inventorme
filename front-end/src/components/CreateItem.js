@@ -16,7 +16,7 @@ export default function CreateItem() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/item", item);
+    await axios.post("/item", item);
   };
 
   return (
