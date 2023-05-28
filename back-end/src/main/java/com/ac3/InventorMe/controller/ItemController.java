@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.Optional;
 import java.util.List;
 
 
@@ -28,14 +27,14 @@ public class ItemController {
     }
 
     @PutMapping("/item/{id}")
-     public ResponseEntity<String> updateItem(@RequestBody Item editItem, @PathVariable("id") int id){
+    public ResponseEntity<String> updateItem(@RequestBody Item editItem, @PathVariable("id") int id) {
         Item existingItem = itemRepository.findById(id).orElse(null);
         if (existingItem != null) {
             existingItem.setItemName(editItem.getItemName());
             existingItem.setItemQuantity(editItem.getItemQuantity());
             existingItem.setDescription(editItem.getDescription());
             itemRepository.save(existingItem);
-            return ResponseEntity.ok("Item updated successfully!");
+            return ResponseEntity.ok().body("Item updated successfully!");
         } else {
             return ResponseEntity.notFound().build();
         }

@@ -1,25 +1,22 @@
 import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function UpdateItem() {
-  const { id } = useParams();
-  const [editItem, setEditItem] = useState({});
+export default function UpdateItem({ id }) {
+  const [editItem, setEditItem] = useState({
+    itemName: "",
+    itemQuantity: "",
+    description: "",
+  });
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8080/items/" + id)
-  //     .then((res) => setEditItem(res.data))
-  //     .catch((err) => console.log(err));
-  // }, [id]);
-
+  console.log({ id });
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:8080/items/" + id, editItem, {
+      await axios.put(`/item/${id}`, editItem, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -27,20 +24,22 @@ export default function UpdateItem() {
       alert("Item updated successfully");
       navigate("/items");
     } catch (err) {
-      alert("Error updating item:", err.message);
+      alert(`Error updating item: ${err.message}`);
     }
   };
 
   return (
     <div>
-      <h1 class="text-center">Update Item</h1>
+      <h1 className="text-center">Update Item</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formName" className="m-5">
           <Form.Label>Item Name: </Form.Label>
           <Form.Control
             type="text"
             value={editItem.itemName}
-            onChange={(e) => setEditItem(e.target.value)}
+            onChange={(e) =>
+              setEditItem({ ...editItem, itemName: e.target.value })
+            }
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="formQuantity" className="m-5">
@@ -48,7 +47,9 @@ export default function UpdateItem() {
           <Form.Control
             type="text"
             value={editItem.itemQuantity}
-            onChange={(e) => setEditItem(e.target.value)}
+            onChange={(e) =>
+              setEditItem({ ...editItem, itemQuantity: e.target.value })
+            }
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="formDescription" className="m-5">
@@ -56,7 +57,9 @@ export default function UpdateItem() {
           <Form.Control
             type="text"
             value={editItem.description}
-            onChange={(e) => setEditItem(e.target.value)}
+            onChange={(e) =>
+              setEditItem({ ...editItem, description: e.target.value })
+            }
           ></Form.Control>
         </Form.Group>
         <Button className="mx-5" variant="primary" type="submit">
