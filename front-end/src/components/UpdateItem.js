@@ -39,6 +39,7 @@ export default function UpdateItem({ id }) {
             onChange={(e) =>
               setEditItem({ ...editItem, itemName: e.target.value })
             }
+            required
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="formQuantity" className="m-5">
@@ -49,6 +50,7 @@ export default function UpdateItem({ id }) {
             onChange={(e) =>
               setEditItem({ ...editItem, itemQuantity: e.target.value })
             }
+            required
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="formDescription" className="m-5">
@@ -59,6 +61,7 @@ export default function UpdateItem({ id }) {
             onChange={(e) =>
               setEditItem({ ...editItem, description: e.target.value })
             }
+            required
           ></Form.Control>
         </Form.Group>
         <Button className="mx-5" variant="primary" type="submit">
