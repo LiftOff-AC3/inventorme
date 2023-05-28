@@ -5,14 +5,15 @@ import UpdateItem from "./UpdateItem";
 export default function ItemsList() {
   const [items, setItems] = useState(null);
   const [error, setError] = useState(null);
-  const [open, setOpen] = useState({ update: false });
+  const [open, setOpen] = useState({ update: false, id: null });
   const handleClose = () => {
-    setOpen({ update: false, Id: "" });
+    setOpen({ update: false, id: null });
   };
 
+  console.log(open);
   useEffect(() => {
     axios
-      .get("http://localhost:8080/items")
+      .get("/items")
       .then((response) => {
         setItems(response.data);
       })
@@ -57,6 +58,7 @@ export default function ItemsList() {
                     </button>
                     {open.update && open.id === item.id && (
                       <UpdateItem
+                        id={open.id}
                         onClose={handleClose}
                         toEditTitle={item.itemName}
                         toEditItemQuantity={item.itemQuantity}

@@ -37,14 +37,14 @@ export default function Registration() {
   const handleSubmit = async (e) => {
     try {
       await axios
-        .post("http://localhost:8080/registration", {
+        .post("/registration", {
           name: name,
           company: company,
           email: email,
           password: hashedPassword,
         })
         .then(navigate("/items"));
-      await axios.post("http://localhost:8080/login", {
+      await axios.post("/login", {
         email: email,
         password: password,
       });
@@ -56,7 +56,7 @@ export default function Registration() {
 
   return (
     <div id="registration-page">
-      <h1 class="text-center">Register</h1>
+      <h1 className="text-center">Register</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formName" className="m-5">
           <Form.Label>Name: </Form.Label>

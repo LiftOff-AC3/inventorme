@@ -20,7 +20,7 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/add" element={<Item />} />
           <Route path="/items" element={<ItemsList />} />
-          <Route path="/update" element={<UpdateItem />} />
+          <Route path="/item/:id" element={<UpdateItem />} />
         </Routes>
       </BrowserRouter>
     </div>
