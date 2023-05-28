@@ -48,14 +48,16 @@ export default function ItemsList() {
                   <td> {item.itemQuantity} </td>
                   <td> {item.description} </td>
                   <td>
-                    <button
-                      className="viewItemButton"
-                      onClick={() =>
-                        setOpen({ ...open, update: true, id: item.id })
-                      }
-                    >
-                      Edit
-                    </button>
+                    {!(open.update && open.id === item.id) && (
+                      <button
+                        className="viewItemButton"
+                        onClick={() => {
+                          setOpen({ ...open, update: true, id: item.id });
+                        }}
+                      >
+                        Edit
+                      </button>
+                    )}
                     {open.update && open.id === item.id && (
                       <UpdateItem
                         id={open.id}
