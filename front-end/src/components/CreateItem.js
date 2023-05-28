@@ -14,7 +14,6 @@ export default function CreateItem() {
   };
 
   const onSubmit = async (e) => {
-    e.preventDefault();
     await axios.post("/item", item);
   };
 
