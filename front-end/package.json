@@ -7,6 +7,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
@@ -40,7 +41,6 @@
     ]
   },
   "devDependencies": {
-    "jest": "^29.5.0",
-    "jest-watch-typeahead": "^0.6.5"
+    "jest": "^27.5.1"
   }
 }

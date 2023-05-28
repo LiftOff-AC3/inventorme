@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import Landing from './components/layout/Landing';
+import Landing from './Landing';
 
 
 test('renders Landing component without crashing', () => {
@@ -26,8 +26,8 @@ test('renders Landing component without crashing', () => {
       handleCreateAccount: handleCreateAccountMock,
     };
     const { getByText } = render(<Landing {...props} />);
-    const createAccountButton = getByText(/Create Account/i);
-    fireEvent.click(createAccountButton);
+    const registerButton = getByText(/Register/i);
+    fireEvent.click(registerButton);
     expect(handleCreateAccountMock).toHaveBeenCalled();
   });
 

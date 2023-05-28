@@ -1,19 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-export default function CreateItemForm() {
+export default function CreateItem() {
+
+  const navigate = useNavigate();
 
   const [item, setItem] = useState({
     itemName: "",
     itemQuantity: "",
     description: ""
   });
+
   const onChangeItem = (e) => {
     setItem({ ...item, [e.target.name]: e.target.value })
   }
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/item", item);
+    try {
+      await axios.post("http://localhost:8080/item", item)
+        .then(navigate("/items"));
+    }
+    catch (err) {
+      alert(err);
+    }
   }
 
   return (
@@ -32,6 +43,7 @@ export default function CreateItemForm() {
                 name="itemName"
                 value={item.itemName}
                 onChange={onChangeItem}
+                required
               />
             </div>
             <div className="text-center mb-3">
@@ -44,6 +56,7 @@ export default function CreateItemForm() {
                 name="itemQuantity"
                 value={item.itemQuantity}
                 onChange={onChangeItem}
+                required
               />
             </div>
             <div className="text-center mb-3">
@@ -58,7 +71,8 @@ export default function CreateItemForm() {
                 onChange={onChangeItem}
               />
             </div>
-            <button type="submit" className="btn btn-outline-primary">
+            <button type="submit"
+              className="btn btn-outline-primary">
               Submit
             </button>
           </form>
