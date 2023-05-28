@@ -14,7 +14,6 @@ export default function UpdateItem({ id }) {
 
   console.log({ id });
   const handleSubmit = async (e) => {
-    e.preventDefault();
     try {
       await axios.put(`/item/${id}`, editItem, {
         headers: {
