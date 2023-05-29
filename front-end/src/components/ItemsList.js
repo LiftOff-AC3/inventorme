@@ -8,6 +8,9 @@ export default function ItemsList() {
     const [selectedItems, setSelectedItems] = useState([]);
 	const [search, setSearch] = useState('');
 	
+	const cursorStyle = {
+		cursor: 'pointer',
+	}
 	useEffect(() => {
 		axios.get("http://localhost:8080/items")
 			.then((response) => {
@@ -53,13 +56,12 @@ export default function ItemsList() {
 
     }
   }
-  console.log(items);
 	return (
 	<>
 		<h1 className="m-5 text-center">Items List</h1>
 		<div className='item-list-table m-5'>
 		  <div className='text-center'>
-		    <input type= "text" onChange={(e) => setSearch(e.target.value.toLowerCase())} placeholder='Search for Item' className='mb-4' />
+		    <input type= "text" onChange={(e) => setSearch(e.target.value.toLowerCase())} placeholder='Search for Item...' className='mb-4'/>
 		  </div>
 			<table className='table table-bordered table-striped '>
 				<thead>
@@ -80,6 +82,7 @@ export default function ItemsList() {
 						      <label>
 						        <input
 						           type="checkbox"
+								   style={cursorStyle}
 						           onChange={e => handleCheckboxSelect(e, item.id)}
 						           checked={selectedItems.includes(item.id)}
 						           />
