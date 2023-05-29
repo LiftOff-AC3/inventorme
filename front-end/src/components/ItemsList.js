@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
+
 
 export default function ItemsList() {
-	const [items, setItems] = useState(null);
+	const [items, setItems] = useState([]);
 	const [error, setError] = useState(null);
     const [selectedItems, setSelectedItems] = useState([]);
 	const [search, setSearch] = useState('');
+	
 	useEffect(() => {
 		axios.get("http://localhost:8080/items")
 			.then((response) => {
@@ -53,21 +53,14 @@ export default function ItemsList() {
 
     }
   }
+  console.log(items);
 	return (
 	<>
 		<h1 className="m-5 text-center">Items List</h1>
 		<div className='item-list-table m-5'>
-		<Form>
-			<InputGroup>
-				<Form.Control onChange={(e) => setSearch(e.target.value.toLowerCase())} placeholder=' Search Items...' />
-			</InputGroup>
-		</Form>
-		<button
-		    onClick={handleDelete}
-			type="button"
-		    class="btn btn-secondary btn-sm btn-danger"
-		    >Delete
-		</button>
+		  <div className='text-center'>
+		    <input type= "text" onChange={(e) => setSearch(e.target.value.toLowerCase())} placeholder='Search for Item' className='mb-4' />
+		  </div>
 			<table className='table table-bordered table-striped '>
 				<thead>
 					<tr className='table-dark text-center'>
@@ -79,7 +72,9 @@ export default function ItemsList() {
 					</tr>
 				</thead>
 				<tbody>
-					{items && items.length > 0 && items.map(item => (
+				{items.filter((item) => {
+						return search.toLowerCase() === '' ? item : item.itemName.toLowerCase().includes(search) || item.description.toLowerCase().includes(search) ;
+					}).map(item => (
 						<tr key={item.id}>
 						    <td>
 						      <label>
@@ -98,7 +93,14 @@ export default function ItemsList() {
 					))}
 				</tbody>
 			</table>
+		<button
+		    onClick={handleDelete}
+			type="button"
+		    className="btn btn-secondary btn-sm btn-danger"
+		    >Delete
+		</button>
 		</div>
+		
 		</>
 	)
 }
