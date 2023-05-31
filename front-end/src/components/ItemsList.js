@@ -72,6 +72,7 @@ export default function ItemsList() {
         <table className="table table-bordered table-striped ">
           <thead>
             <tr className="table-dark text-center">
+              <td></td>
               <td> Id </td>
               <td> Name </td>
               <td> Quantity </td>
