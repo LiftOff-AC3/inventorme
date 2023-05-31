@@ -5,9 +5,17 @@ import Button from "react-bootstrap/Button";
 export default function ItemsList() {
 	const [items, setItems] = useState(null);
 	const [error, setError] = useState(null);
-    const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
+
+
 	useEffect(() => {
-		axios.get("http://localhost:8080/items")
+    const loginId = localStorage.getItem('loginId');
+    console.log(typeof loginId);
+		axios.get("http://localhost:8080/items", {
+		 headers: {
+		  'Authorization': loginId
+		 }
+		})
 			.then((response) => {
 				setItems(response.data)
 			})
@@ -65,7 +73,6 @@ export default function ItemsList() {
 				<thead>
 					<tr className='table-dark text-center'>
 						<td></td>
-						<td> ID </td>
 						<td> Name </td>
 						<td> Quantity </td>
 						<td> Description </td>
@@ -83,7 +90,6 @@ export default function ItemsList() {
 						           />
 						      </label>
 						    </td>
-							<td> {item.id} </td>
 							<td> {item.itemName} </td>
 							<td> {item.itemQuantity} </td>
 							<td> {item.description} </td>

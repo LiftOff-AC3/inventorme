@@ -18,8 +18,17 @@ export default function Login() {
       });
 
       if (response.status === 200) {
+        const authToken = response.data.token;
+        const loginId = response.data.loginId;
+
+        console.log(response);
+
+        localStorage.setItem("token", authToken);
+        localStorage.setItem("loginId", loginId);
+
         navigate("/items");
       }
+
     } catch (err) {
       if (err.response && err.response.status === 401) {
         alert("Login failed. Please check your email and password.");

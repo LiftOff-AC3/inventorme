@@ -1,14 +1,20 @@
 package com.ac3.InventorMe.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 
 @Entity
 public class Item {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Login userId;
+
     private String itemName;
     private String Description;
     private int itemQuantity;
@@ -43,5 +49,15 @@ public class Item {
 
     public void setItemQuantity(int itemQuantity) {
         this.itemQuantity = itemQuantity;
+    }
+
+    public Login getUserId() { return userId; }
+
+    public void setUserId(Login userId) { this.userId = userId; }
+
+    public void setUserId(int userId) {
+        Login login = new Login();
+        login.setId(userId);
+        this.userId = login;
     }
 }

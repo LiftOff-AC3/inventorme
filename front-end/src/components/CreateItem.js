@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateItem() {
 
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
   const [item, setItem] = useState({
     itemName: "",
     itemQuantity: "",
-    description: ""
+    description: "",
   });
 
   const onChangeItem = (e) => {
@@ -17,12 +18,20 @@ export default function CreateItem() {
   }
 
   const onSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post("http://localhost:8080/item", item)
-        .then(navigate("/items"));
-    }
-    catch (err) {
+   e.preventDefault();
+       try {
+         const loginId = parseInt(localStorage.getItem("loginId"));
+           const newItem = {
+             itemName: item.itemName,
+             itemQuantity: item.itemQuantity,
+             description: item.description,
+             userId: loginId
+           };
+         console.log(newItem);
+
+       await axios.post("http://localhost:8080/item", newItem)
+         .then(navigate("/items"));
+   } catch (err) {
       alert(err);
     }
   }
@@ -50,7 +59,7 @@ export default function CreateItem() {
               <label htmlFor="Quantity" className="form-label">
                 Quantity
               </label>
-              <input type={"text"}
+              <input type={"number"}
                 className="form-control"
                 placeholder="Enter Quantity to Store"
                 name="itemQuantity"

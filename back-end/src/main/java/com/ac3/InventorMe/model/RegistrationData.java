@@ -1,12 +1,15 @@
 package com.ac3.InventorMe.model;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.util.UUID;
 
 @Entity
 public class RegistrationData {
     @Id
-    private UUID uuid = UUID.randomUUID();
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String name;
     private String company;
 
@@ -26,11 +29,11 @@ public class RegistrationData {
         this.company = company;
     }
 
-    public UUID getUuid() {
-        return uuid;
+    public int getId() {
+        return id;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
+    public void setId(int id) {
+        this.id = id;
     }
 }
