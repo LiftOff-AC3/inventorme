@@ -3,12 +3,12 @@ export default function Landing() {
     <>
       <div id="landing-page" className="bg-dark text-white p-5">
         <div id="landing-left-col">
-          <img
+          {/* <img
             id="logo"
             src="logo_transparent.png"
             alt="logo"
             className="float-start"
-          ></img>
+          ></img> */}
         </div>
         <div id="landing-right-col">
           <h3 className="text-center">Welcome To InventorMe!</h3>

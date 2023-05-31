@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import styles from "./Login.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -38,10 +39,10 @@ export default function Login() {
   }
 
   return (
-    <div className="Login">
-      <h1 className="m-5 text-center">Log In</h1>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formEmail" className="m-5">
+    <div class="box">
+      <h1>Log In</h1>
+      <Form class="form-container" onSubmit={handleSubmit}>
+        <Form.Group controlId="formEmail" className="m-1">
           <Form.Label>Email: </Form.Label>
           <Form.Control
             type="email"
@@ -51,7 +52,7 @@ export default function Login() {
             required
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId="formPassword" className="m-5">
+        <Form.Group controlId="formPassword" className="m-1">
           <Form.Label>Password: </Form.Label>
           <Form.Control
             type="password"
@@ -63,8 +64,8 @@ export default function Login() {
         </Form.Group>
         <Button
           id="login-submit-button"
-          className="mx-5"
-          variant="primary"
+          // className="mx-5"
+          // variant="primary"
           type="submit"
         >
           Submit

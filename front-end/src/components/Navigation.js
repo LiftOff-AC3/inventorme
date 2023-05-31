@@ -18,10 +18,19 @@ export default function Navigation() {
 	};
 
 	return (
-		<nav>
+		<header>
+		<nav class="navbar">
 			<div>
 				{isLandingPage && (
 					<div className="landing-nav">
+						<Link className="login-nav-link" to="/" style={linkStyle}>
+							<img
+								id="logo"
+								src="logo_transparent.png"
+								alt="logo"
+								className="float-start"
+							></img>
+						</Link>
 						<Link className="landing-nav-link" to="/login" style={linkStyle}>
 							Login
 						</Link>
@@ -101,5 +110,6 @@ export default function Navigation() {
 				)}
 			</div>
 		</nav>
+	</header>
 	);
 }
