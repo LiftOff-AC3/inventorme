@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.crypto.SecretKey;
 
-
 @Service
 public class LoginService {
     @Autowired
@@ -22,16 +21,19 @@ public class LoginService {
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
+    //Compares input password with hashed password stored in the database
     public boolean validateLogin(String email, String password) {
         Login login = loginRepository.findByEmail(email);
         String enteredPassword = login.getPassword();
 
         return encoder.matches(password, enteredPassword);
     }
+    //Used to retrieves email of logged-in user
     public Login findByEmail(String email) {
      return loginRepository.findByEmail(email);
     }
 
+    //Creates authentication token that expires after 24hrs
     public String generateAuthToken(Login login) {
 
         long expirationTime = 86400000;
@@ -47,9 +49,6 @@ public class LoginService {
             .setExpiration(expirationDate)
             .signWith(key, SignatureAlgorithm.HS256);
 
-        String authToken = jwtBuilder.compact();
-
-        System.out.println("token: " + jwtBuilder.compact());
-        return authToken;
+        return jwtBuilder.compact();
     }
 }

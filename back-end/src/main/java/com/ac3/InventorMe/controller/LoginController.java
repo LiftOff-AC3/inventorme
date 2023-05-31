@@ -34,6 +34,13 @@ public class LoginController {
         String password = login.getPassword();
         boolean isValidLogin = loginService.validateLogin(email, password);
 
+        /*After calling the isValidLogin function, the email address associated
+        with the validated login credentials is assigned to loggedInUser.
+        An authorization token is then generated for that user.
+        A hashmap is then created that holds the authorization token and the id number
+        of the user from the database. This data is then sent as a response which
+        allows access/usage in the frontend
+        */
         if (isValidLogin) {
             Login loggedInUser = loginService.findByEmail(email);
             if (loggedInUser != null) {

@@ -15,7 +15,7 @@ public class RegistrationController {
     RegistrationData newRegistrationData(@RequestBody RegistrationData newRegistrationData){
         return registrationRepository.save(newRegistrationData);
     }
-//    @GetMappaing("/registration/${id}")
+//    @GetMapping("/registration/${id}")
 //    public Optional<RegistrationData> getRegistrationById(@PathVariable Integer id){
 //        return registrationRepository.getRegistrationById(id);
 //    }

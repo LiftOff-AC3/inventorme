@@ -7,7 +7,9 @@ export default function ItemsList() {
 	const [error, setError] = useState(null);
   const [selectedItems, setSelectedItems] = useState([]);
 
-
+  /*Added a custom header whose value contains that loginId that is shared
+   by the logged-in user and their items. This value is then used in the backend
+   to retrieve items that share that same id to then be displayed in the items table*/
 	useEffect(() => {
     const loginId = localStorage.getItem('loginId');
     console.log(typeof loginId);

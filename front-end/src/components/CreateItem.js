@@ -20,15 +20,16 @@ export default function CreateItem() {
   const onSubmit = async (e) => {
    e.preventDefault();
        try {
+        /* Retrieves the loginId created and stored when the user logged in; this
+        value matches the id of the user's login id in the database and
+        will bind each item to their specific user */
          const loginId = parseInt(localStorage.getItem("loginId"));
            const newItem = {
              itemName: item.itemName,
              itemQuantity: item.itemQuantity,
              description: item.description,
-             userId: loginId
+             userId: loginId //assigns this value to each item created after login
            };
-         console.log(newItem);
-
        await axios.post("http://localhost:8080/item", newItem)
          .then(navigate("/items"));
    } catch (err) {

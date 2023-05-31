@@ -1,4 +1,5 @@
 package com.ac3.InventorMe.controller;
+
 import com.ac3.InventorMe.model.Item;
 import com.ac3.InventorMe.model.Login;
 import com.ac3.InventorMe.repository.ItemRepository;
@@ -31,6 +32,10 @@ public class ItemController {
         return ResponseEntity.ok(newItem);
     }
 
+    /* Uses the value of the "Authorization" header (the current user's
+     loginId number created when the user logs in) to fetch the login whose
+     id matches and then retrieves all items
+     that have a matching loginId number */
     @GetMapping("/items")
     List<Item>getAllItems(@RequestHeader("Authorization") String authorization){
         Login user = loginRepository.getReferenceById(Integer.parseInt(authorization));
