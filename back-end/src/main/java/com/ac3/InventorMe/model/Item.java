@@ -10,7 +10,7 @@ public class Item {
     @GeneratedValue
     private int id;
     private String itemName;
-    private String Description;
+    private String description;
     private int itemQuantity;
 
     public int getId() {
@@ -30,11 +30,11 @@ public class Item {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public int getItemQuantity() {
