@@ -72,11 +72,12 @@ export default function ItemsList() {
         <table className="table table-bordered table-striped ">
           <thead>
             <tr className="table-dark text-center">
-              <td></td>
+              <td> Delete </td>
               <td> Id </td>
               <td> Name </td>
               <td> Quantity </td>
               <td> Description </td>
+              <td> Edit </td>
             </tr>
           </thead>
           <tbody>
