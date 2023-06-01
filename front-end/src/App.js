@@ -10,13 +10,13 @@ import ItemsList from "./components/ItemsList";
 import Registration from "./components/Registration";
 import Landing from "./components/Landing";
 import Login from "./components/Login";
-import Navigation from "./components/Navigation"
+import Header from "./components/Header"
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navigation />
+        <Header/>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
