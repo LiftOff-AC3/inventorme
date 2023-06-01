@@ -12,9 +12,12 @@ width: 100%;
 display: flex;
 justify-content: flex-end;
 align-content: center;
+background-color: #243bec;
+
 }
 .landing-nav-link {
 margin: .5rem;
+color: goldenrod;
 }
 .login-nav,
 .register-nav,
