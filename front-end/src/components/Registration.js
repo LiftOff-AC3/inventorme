@@ -109,7 +109,7 @@ export default function Registration() {
         </Form.Group>
         <Button
           className="mx-5"
-          variant="primary"
+          variant="warning"
           type="submit"
           disabled={!validateForm()}
         >
