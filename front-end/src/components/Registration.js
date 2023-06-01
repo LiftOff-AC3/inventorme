@@ -1,30 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import bcrypt from "bcryptjs";
 
 export default function Registration() {
-    const [name, setName] = useState("");
-    const [company, setCompany] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-  
-    const handleSubmit = async (e) => {
+  const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-    try {
-      await axios.post("http://localhost:8080/registration", {
-        name: name,
-        company: company,
-        email: email,
-        password: password,
-        confirmPassword: confirmPassword
-      });
-      alert("Registration Success!");
-    } catch (err) {
-      alert(err);
-    }
-
+  function validateForm() {
     const regexNameVerification = /^[A-Za-z\s]+$/;
     const regexEmailVerification = /^(.+)@(.+)$/;
 
@@ -34,13 +22,36 @@ export default function Registration() {
       password === "" ||
       confirmPassword === ""
     ) {
-      alert("Please fill out all required fields.");
+      return false;
     } else if (!regexNameVerification.test(name)) {
-      alert("Please enter valid name.");
+      return false;
     } else if (!regexEmailVerification.test(email)) {
-      alert("Please enter valid email address.");
+      return false;
     } else if (password !== confirmPassword) {
-      alert("Please enter the same password.");
+      return false;
+    }
+    return true;
+  }
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    const hashedPassword = bcrypt.hashSync(password, 10);
+    try {
+      await axios
+        .post("http://localhost:8080/registration", {
+          name: name,
+          company: company,
+          email: email,
+        })
+        .then(navigate("/items"));
+      await axios.post("http://localhost:8080/login", {
+        email: email,
+        password: hashedPassword,
+      });
+      alert("Registration Success!");
+    } catch (err) {
+      alert(err);
     }
   };
 
@@ -93,7 +104,12 @@ export default function Registration() {
             placeholder="*********"
           ></Form.Control>
         </Form.Group>
-        <Button className="mx-5" variant="primary" type="submit">
+        <Button
+          className="mx-5"
+          variant="primary"
+          type="submit"
+          disabled={!validateForm()}
+        >
           Submit
         </Button>
       </Form>
