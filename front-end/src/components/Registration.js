@@ -60,7 +60,7 @@ export default function Registration() {
   };
 
   return (
-    <div class="box">
+    <div className="registration-box">
       <h1 class="text-center">Register</h1>
       <Form class="form-container" onSubmit={handleSubmit}>
         <Form.Group controlId="formName" className="m-1">
@@ -109,9 +109,8 @@ export default function Registration() {
           ></Form.Control>
         </Form.Group>
         <Button
-          className="mx-5"
           variant="primary"
-          class="registration-button"
+          className="registration-button"
           type="submit"
           disabled={!validateForm()}
         >
