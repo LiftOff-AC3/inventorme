@@ -1,16 +1,13 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Item from "./components/CreateItem";
 import ItemsList from "./components/ItemsList";
 import Registration from "./components/Registration";
 import Landing from "./components/Landing";
 import Login from "./components/Login";
 import Header from "./components/Header"
+import UpdateItem from "./components/UpdateItem";
 
 function App() {
   return (
@@ -23,6 +20,7 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/add" element={<Item />} />
           <Route path="/items" element={<ItemsList />} />
+          <Route path="/item/:id" element={<UpdateItem />} />
         </Routes>
       </BrowserRouter>
     </div>

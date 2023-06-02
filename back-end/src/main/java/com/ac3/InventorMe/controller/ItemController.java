@@ -1,4 +1,5 @@
 package com.ac3.InventorMe.controller;
+
 import com.ac3.InventorMe.model.Item;
 import com.ac3.InventorMe.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,31 @@ public class ItemController {
     @Autowired
     private ItemRepository itemRepository;
 
+    public ItemController(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
+    }
+
     @PostMapping("/item")
-    Item newItem(@RequestBody Item newItem){
+    Item newItem(@RequestBody Item newItem) {
         return itemRepository.save(newItem);
     }
 
+    @PutMapping("/item/{id}")
+    public ResponseEntity<String> updateItem(@RequestBody Item editItem, @PathVariable("id") int id) {
+        Item existingItem = itemRepository.findById(id).orElse(null);
+        if (existingItem != null) {
+            existingItem.setItemName(editItem.getItemName());
+            existingItem.setItemQuantity(editItem.getItemQuantity());
+            existingItem.setDescription(editItem.getDescription());
+            itemRepository.save(existingItem);
+            return ResponseEntity.ok().body("Item updated successfully!");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping("/items")
-    List<Item>getAllItems(){
+    List<Item> getAllItems() {
         return itemRepository.findAll();
     }
 
