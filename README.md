@@ -10,10 +10,10 @@ Items
 - Name
 - Qty 
 - Details  
-- Category
-- location
 - CRUD
 <!-- 
+- Category
+- location
 - Images
 - Unique categories
 - Cost
