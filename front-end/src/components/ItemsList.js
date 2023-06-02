@@ -21,7 +21,7 @@ export default function ItemsList() {
       .catch((error) => {
         setError(error);
       });
-  }, []);
+  }, [error]);
 
   function handleCheckboxSelect(e, itemId) {
     const isChecked = e.target.checked;
@@ -61,6 +61,9 @@ export default function ItemsList() {
   return (
     <>
       <h1 className="m-5 text-center">Items List</h1>
+      <div className="text-center">
+  <input type="text" onChange={(e) => setSearch(e.target.value.toLowerCase())} placeholder="Search for Item..."/>
+	</div>
       <div className="item-list-table m-5">
         <button
           onClick={handleDelete}
@@ -81,9 +84,9 @@ export default function ItemsList() {
             </tr>
           </thead>
           <tbody>
-            {items &&
-              items.length > 0 &&
-              items.map((item) => (
+		{items.filter((item) => {
+			return search.toLowerCase() === '' ? item : item.itemName.toLowerCase().includes(search) || item.description.toLowerCase().includes(search) ;
+			}).map(item => (
                 <tr key={item.id}>
                   <td>
                     <label>
