@@ -17,16 +17,16 @@ export default function Login() {
         password: password,
       });
 
-      if (response.status === 200) {
-        navigate("/items");
-      }
-    } catch (err) {
-      if (err.response && err.response.status === 401) {
-        alert("Login failed. Please check your email and password.");
-      } else {
-        alert("An error occurred. Please try again later.");
-      }
-    }
+          if (response.status === 200) {
+            navigate("/items");
+          }
+        } catch (err) {
+          if (err.response && err.response.status === 401) {
+             alert("Login failed. Please check your email and password.");
+             } else {
+             alert("An error occurred. Please try again later.");
+            }
+        }
   }
 
   return (

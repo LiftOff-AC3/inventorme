@@ -6,14 +6,14 @@ import ItemsList from "./components/ItemsList";
 import Registration from "./components/Registration";
 import Landing from "./components/Landing";
 import Login from "./components/Login";
+import Header from "./components/Header";
 import UpdateItem from "./components/UpdateItem";
-import Navigation from "./components/Navigation";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navigation />
+        <Header />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
