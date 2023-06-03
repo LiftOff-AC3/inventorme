@@ -4,12 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.util.UUID;
 
 @Entity
 public class RegistrationData {
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private UUID uuid = UUID.randomUUID();
     private String name;
     private String company;
 
@@ -28,12 +29,9 @@ public class RegistrationData {
     public void setCompany(String company) {
         this.company = company;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    public UUID getUuid() {
+        return uuid;
+   
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
 }
