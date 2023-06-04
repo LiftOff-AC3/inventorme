@@ -1,17 +1,37 @@
 package com.ac3.InventorMe.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Item {
 
+    @ManyToOne
+    @JoinColumn(name = "login_id")
+    private Login login;
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String itemName;
     private String description;
     private int itemQuantity;
+
+    public Item(int id, String itemName, String description, int itemQuantity, Login login) {
+        this.id = id;
+        this.itemName = itemName;
+        this.description = description;
+        this.itemQuantity = itemQuantity;
+        this.login = login;
+    }
+
+    public Item() {}
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
 
     public int getId() {
         return id;
