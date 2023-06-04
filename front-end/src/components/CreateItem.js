@@ -9,11 +9,9 @@ export default function CreateItem() {
     itemQuantity: "",
     description: "",
   });
-
   const onChangeItem = (e) => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
-
   const onSubmit = async (e) => {
     try {
       await axios.post("/item", item).then(navigate("/items"));
