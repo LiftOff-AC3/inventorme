@@ -12,6 +12,8 @@ export default function ItemsList() {
   };
 
   console.log(open);
+  const [search, setSearch] = useState('');
+  
   useEffect(() => {
     axios
       .get("/items")
