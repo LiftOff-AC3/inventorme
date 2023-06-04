@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function CreateItem() {
+export default function CreateItem () {
+  
+  const navigate = useNavigate();
   const [item, setItem] = useState({
     itemName: "",
     itemQuantity: "",
     description: "",
   });
-
   const onChangeItem = (e) => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
-
   const onSubmit = async (e) => {
     try {
       await axios.post("/item", item).then(navigate("/items"));
