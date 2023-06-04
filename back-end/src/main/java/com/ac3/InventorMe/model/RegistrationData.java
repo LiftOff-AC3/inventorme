@@ -31,7 +31,8 @@ public class RegistrationData {
     }
     public UUID getUuid() {
         return uuid;
-   
+    }
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
+    }
 }
