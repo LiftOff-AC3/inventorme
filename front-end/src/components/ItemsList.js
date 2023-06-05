@@ -81,12 +81,13 @@ export default function ItemsList() {
               <td> Name </td>
               <td> Quantity </td>
               <td> Description </td>
+              <td> Category </td>
               <td> Edit </td>
             </tr>
           </thead>
           <tbody>
 		{items.filter((item) => {
-			return search.toLowerCase() === '' ? item : item.itemName.toLowerCase().includes(search) || item.description.toLowerCase().includes(search) ;
+			return search.toLowerCase() === '' ? item : item.itemName.toLowerCase().includes(search) || item.description.toLowerCase().includes(search) || item.itemCategory.toLowerCase().includes(search);
 			}).map(item => (
                 <tr key={item.id}>
                   <td>
@@ -102,6 +103,7 @@ export default function ItemsList() {
                   <td> {item.itemName} </td>
                   <td> {item.itemQuantity} </td>
                   <td> {item.description} </td>
+                  <td> {item.itemCategory} </td>
                   <td>
                     {!(open.update && open.id === item.id) && (
                       <button

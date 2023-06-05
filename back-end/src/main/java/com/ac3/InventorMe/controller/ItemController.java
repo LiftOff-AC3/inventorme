@@ -33,6 +33,7 @@ public class ItemController {
             existingItem.setItemName(editItem.getItemName());
             existingItem.setItemQuantity(editItem.getItemQuantity());
             existingItem.setDescription(editItem.getDescription());
+            existingItem.setItemCategory(editItem.getItemCategory());
             itemRepository.save(existingItem);
             return ResponseEntity.ok().body("Item updated successfully!");
         } else {

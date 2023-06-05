@@ -12,6 +12,7 @@ public class Item {
     private String itemName;
     private String description;
     private int itemQuantity;
+    private String itemCategory;
 
     public int getId() {
         return id;
@@ -43,5 +44,14 @@ public class Item {
 
     public void setItemQuantity(int itemQuantity) {
         this.itemQuantity = itemQuantity;
+    }
+
+
+    public String getItemCategory() {
+        return itemCategory;
+    }
+
+    public void setItemCategory(String itemCategory) {
+        this.itemCategory = itemCategory;
     }
 }
