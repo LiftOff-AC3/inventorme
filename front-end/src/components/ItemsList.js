@@ -69,7 +69,7 @@ export default function ItemsList() {
         <button
           onClick={handleDelete}
           type="button"
-          class="btn btn-secondary btn-sm btn-danger"
+          className="btn btn-secondary btn-sm btn-danger"
         >
           Delete
         </button>

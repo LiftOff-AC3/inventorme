@@ -41,7 +41,7 @@ export default function Registration() {
           name: name,
           company: company,
           email: email,
-          password: hashedPassword,
+          password: setPassword,
         })
         .then(navigate("/items"));
       await axios.post("/login", {
