@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function CreateItem () {
-  
+export default function CreateItem() {
   const navigate = useNavigate();
   const [item, setItem] = useState({
     itemName: "",
