@@ -1,8 +1,11 @@
 package com.ac3.InventorMe.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -11,6 +14,9 @@ public class RegistrationData {
 
     @OneToOne
     private Login login;
+
+    @OneToMany(mappedBy = "registrationData")
+    private List<Item> item;
     
     @Id
     private UUID uuid = UUID.randomUUID();

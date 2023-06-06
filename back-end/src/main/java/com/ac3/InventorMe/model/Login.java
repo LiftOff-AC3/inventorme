@@ -11,9 +11,6 @@ public class Login {
     @JoinColumn(name = "user_id")
     private RegistrationData registrationData;
 
-    @OneToMany(mappedBy = "login")
-    private List<Item> item;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

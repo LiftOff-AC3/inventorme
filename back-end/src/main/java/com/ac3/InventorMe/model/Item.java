@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 public class Item {
 
     @ManyToOne
-    @JoinColumn(name = "login_id")
-    private Login login;
+    @JoinColumn(name = "user_id")
+    private RegistrationData registrationData;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,22 +15,22 @@ public class Item {
     private String description;
     private int itemQuantity;
 
-    public Item(int id, String itemName, String description, int itemQuantity, Login login) {
+    public Item(int id, String itemName, String description, int itemQuantity, RegistrationData registrationData) {
         this.id = id;
         this.itemName = itemName;
         this.description = description;
         this.itemQuantity = itemQuantity;
-        this.login = login;
+        this.registrationData = registrationData;
     }
 
     public Item() {}
 
-    public Login getLogin() {
-        return login;
+    public RegistrationData getRegistrationData() {
+        return registrationData;
     }
 
-    public void setLogin(Login login) {
-        this.login = login;
+    public void setRegistrationData(RegistrationData registrationData) {
+        this.registrationData = registrationData;
     }
 
     public int getId() {
