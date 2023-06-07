@@ -26,12 +26,12 @@ public class ItemController {
         return ResponseEntity.ok(newItem);
     }
     /* Converts the String type of the  userUUID response header to UUID,
-        returns only items whose UUID matches
-     */
+        returns only items whose UUID matches */
     @GetMapping("/items")
     List<Item>getAllItems(@RequestHeader("UserUUID") String authorization){
         UUID loggedInUuid = UUID.fromString(authorization);
         return itemRepository.findByUserUuid(loggedInUuid);
+    }
 
     public ItemController(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
