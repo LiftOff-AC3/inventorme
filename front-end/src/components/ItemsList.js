@@ -4,7 +4,7 @@ import UpdateItem from "./UpdateItem";
 
 export default function ItemsList() {
 
-  const [items, setItems] = useState(null);
+  const [items, setItems] = useState([]);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState('');
   const [selectedItems, setSelectedItems] = useState([]);
