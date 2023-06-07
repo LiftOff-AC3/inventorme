@@ -1,7 +1,6 @@
 package com.ac3.InventorMe.controller;
 
 import com.ac3.InventorMe.model.Item;
-import com.ac3.InventorMe.model.Login;
 import com.ac3.InventorMe.repository.ItemRepository;
 import com.ac3.InventorMe.repository.LoginRepository;
 import com.ac3.InventorMe.services.LoginService;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
@@ -31,15 +31,13 @@ public class ItemController {
         Item newItem = itemRepository.save(item);
         return ResponseEntity.ok(newItem);
     }
-
-    /* Uses the value of the "Authorization" header (the current user's
-     loginId number created when the user logs in) to fetch the login whose
-     id matches and then retrieves all items
-     that have a matching loginId number */
+    /* Converts the String type of the  userUUID response header to UUID,
+        returns only items whose UUID matches
+     */
     @GetMapping("/items")
-    List<Item>getAllItems(@RequestHeader("Authorization") String authorization){
-        Login user = loginRepository.getReferenceById(Integer.parseInt(authorization));
-        return itemRepository.findByUserId(user);
+    List<Item>getAllItems(@RequestHeader("UserUUID") String authorization){
+        UUID loggedInUuid = UUID.fromString(authorization);
+        return itemRepository.findByUserUuid(loggedInUuid);
     }
 
     @DeleteMapping("/item")

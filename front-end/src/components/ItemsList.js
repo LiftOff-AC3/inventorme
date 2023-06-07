@@ -7,16 +7,17 @@ export default function ItemsList() {
 	const [error, setError] = useState(null);
   const [selectedItems, setSelectedItems] = useState([]);
 
-  /*Added a custom header whose value contains that loginId that is shared
-   by the logged-in user and their items. This value is then used in the backend
-   to retrieve items that share that same id to then be displayed in the items table*/
+
 	useEffect(() => {
-    const loginId = localStorage.getItem('loginId');
-    console.log(typeof loginId);
-		axios.get("http://localhost:8080/items", {
-		 headers: {
-		  'Authorization': loginId
-		 }
+	/*Lines 13-19 create a variable that holds the logged-in users UUID and
+	then creates a custom HTTP header that sends that data to the backend to allow
+	retrieval of items with matching UUIDs */
+   const userUuid = localStorage.getItem('userUuid');
+   console.log(typeof userUuid)
+   		axios.get("http://localhost:8080/items", {
+   		 headers: {
+   		  'UserUUID': userUuid
+   		 }
 		})
 			.then((response) => {
 				setItems(response.data)

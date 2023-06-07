@@ -1,7 +1,7 @@
 package com.ac3.InventorMe.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import java.util.UUID;
 
 @Entity
 public class Item {
@@ -9,18 +9,10 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    /*JsonIgnoreProperties solved the issue I ran into with the items
-    list not rendering in the table. I'll leave info about the two properties
-    in the comment section of the pull request*/
-    @ManyToOne
-    @JoinColumn(name="login_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Login userId;
-
     private String itemName;
     private String Description;
     private int itemQuantity;
+    private UUID userUuid;
 
     public int getId() {
         return id;
@@ -46,21 +38,13 @@ public class Item {
         Description = description;
     }
 
-    public int getItemQuantity() {
-        return itemQuantity;
-    }
+    public int getItemQuantity() { return itemQuantity; }
 
     public void setItemQuantity(int itemQuantity) {
         this.itemQuantity = itemQuantity;
     }
 
-    public Login getUserId() { return userId; }
+    public UUID getUserUuid() { return userUuid; }
 
-    public void setUserId(Login userId) { this.userId = userId; }
-
-    public void setUserId(int userId) {
-        Login login = new Login();
-        login.setId(userId);
-        this.userId = login;
-    }
+    public void setUserUuid(UUID userUuid) { this.userUuid = userUuid; }
 }

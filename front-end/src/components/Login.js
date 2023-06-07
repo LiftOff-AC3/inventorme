@@ -18,14 +18,11 @@ export default function Login() {
       });
 
       if (response.status === 200) {
-        /* After succucesl login,
-        response data is retrieved and stored in the browser's local storage.
-        The loginId will be used to associate each created item with the currently
-        logged in user */
+
         const authToken = response.data.token;
-        const loginId = response.data.loginId;
+        const userUuid = response.data.userUuid;
         localStorage.setItem("token", authToken);
-        localStorage.setItem("loginId", loginId);
+        localStorage.setItem("userUuid", userUuid);
 
         navigate("/items");
       }

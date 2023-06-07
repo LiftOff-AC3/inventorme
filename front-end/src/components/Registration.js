@@ -36,20 +36,25 @@ export default function Registration() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     const hashedPassword = bcrypt.hashSync(password, 10);
     try {
-      await axios
-        .post("http://localhost:8080/registration", {
+      const response = await axios.post("http://localhost:8080/registration", {
           name: name,
           company: company,
           email: email,
-        })
-        .then(navigate("/login"));
+        });
+      /* Registration endpoint returns the random UUID,
+         and it is then assigned to the login */
+      const userUuid = response.data;
+
       await axios.post("http://localhost:8080/login", {
         email: email,
         password: hashedPassword,
+        userUuid: userUuid
       });
       alert("Registration Success!");
+      navigate("/login");
     } catch (err) {
       alert(err);
     }

@@ -40,7 +40,7 @@ public class LoginService {
         Date expirationDate = new Date(System.currentTimeMillis() + expirationTime);
 
         Map<String, Object> claims = new HashMap<>();
-        claims.put("userId", login.getId());
+        claims.put("userUuid", login.getUserUuid());
 
         SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
