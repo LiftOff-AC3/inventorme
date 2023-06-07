@@ -13,9 +13,6 @@ export default function ItemsList() {
     setOpen({ update: false, id: null });
   };
     useEffect(() => {
-	/*Lines 13-19 create a variable that holds the logged-in users UUID and
-	then creates a custom HTTP header that sends that data to the backend to allow
-	retrieval of items with matching UUIDs */
     const userUuid = localStorage.getItem('userUuid');
    		axios.get("http://localhost:8080/items", {
    		 headers: {
@@ -42,7 +39,6 @@ export default function ItemsList() {
   async function handleDelete(e) {
     e.preventDefault();
     try {
-      //deletes each item
       await Promise.all(
         selectedItems.map((itemId) =>
           axios.delete("/item", {
@@ -50,7 +46,6 @@ export default function ItemsList() {
           })
         )
       );
-      //refreshes item table after deletion
       axios
         .get("/items")
         .then((response) => {
@@ -59,7 +54,6 @@ export default function ItemsList() {
         .catch((error) => {
           setError(error);
         });
-      //clear selected items array
       setSelectedItems([]);
     } catch (error) {
       alert("Error deleting items", error);

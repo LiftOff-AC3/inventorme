@@ -2,8 +2,6 @@ package com.ac3.InventorMe.controller;
 
 import com.ac3.InventorMe.model.Item;
 import com.ac3.InventorMe.repository.ItemRepository;
-import com.ac3.InventorMe.repository.LoginRepository;
-import com.ac3.InventorMe.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -25,8 +23,7 @@ public class ItemController {
         Item newItem = itemRepository.save(item);
         return ResponseEntity.ok(newItem);
     }
-    /* Converts the String type of the  userUUID response header to UUID,
-        returns only items whose UUID matches */
+
     @GetMapping("/items")
     List<Item>getAllItems(@RequestHeader("UserUUID") String authorization){
         UUID loggedInUuid = UUID.fromString(authorization);

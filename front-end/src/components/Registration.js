@@ -44,8 +44,7 @@ export default function Registration() {
           company: company,
           email: email,
         });
-      /* Registration endpoint returns the random UUID,
-         and it is then assigned to the login */
+
       const userUuid = response.data;
 
       await axios.post("http://localhost:8080/login", {

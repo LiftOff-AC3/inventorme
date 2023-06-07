@@ -18,13 +18,12 @@ export default function CreateItem() {
   const onSubmit = async (e) => {
    e.preventDefault();
        try {
-        /* Retrieves the stored user/login UUID */
          const userUuid = localStorage.getItem("userUuid");
            const newItem = {
              itemName: item.itemName,
              itemQuantity: item.itemQuantity,
              description: item.description,
-             userUuid: userUuid //assigns the shared UUID value to each item
+             userUuid: userUuid
            };
        await axios.post("http://localhost:8080/item", newItem)
          .then(navigate("/items"));
