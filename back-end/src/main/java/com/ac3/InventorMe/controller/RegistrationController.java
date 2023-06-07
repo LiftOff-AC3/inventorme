@@ -23,14 +23,9 @@ public class RegistrationController {
         UUID userUuid = savedRegistrationData.getUuid();
         return ResponseEntity.ok().body(userUuid);
     }
-//    @GetMapping("/registration/${id}")
-//    public Optional<RegistrationData> getRegistrationById(@PathVariable Integer id){
-//        return registrationRepository.getRegistrationById(id);
-//    }
 
     @GetMapping("/registrations")
     List<RegistrationData>getAllRegistrationData(){
         return registrationRepository.findAll();
     }
-
 }

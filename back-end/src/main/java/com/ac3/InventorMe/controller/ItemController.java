@@ -20,12 +20,6 @@ public class ItemController {
     @Autowired
     private ItemRepository itemRepository;
 
-    @Autowired
-    private LoginRepository loginRepository;
-
-    @Autowired
-    private LoginService loginService;
-
     @PostMapping("/item")
     public ResponseEntity<Item> createItem(@RequestBody Item item) {
         Item newItem = itemRepository.save(item);
@@ -38,6 +32,23 @@ public class ItemController {
     List<Item>getAllItems(@RequestHeader("UserUUID") String authorization){
         UUID loggedInUuid = UUID.fromString(authorization);
         return itemRepository.findByUserUuid(loggedInUuid);
+
+    public ItemController(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
+    }
+
+    @PutMapping("/item/{id}")
+    public ResponseEntity<String> updateItem(@RequestBody Item editItem, @PathVariable("id") int id) {
+        Item existingItem = itemRepository.findById(id).orElse(null);
+        if (existingItem != null) {
+            existingItem.setItemName(editItem.getItemName());
+            existingItem.setItemQuantity(editItem.getItemQuantity());
+            existingItem.setDescription(editItem.getDescription());
+            itemRepository.save(existingItem);
+            return ResponseEntity.ok().body("Item updated successfully!");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/item")
