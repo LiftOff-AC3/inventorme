@@ -4,21 +4,19 @@ import UpdateItem from "./UpdateItem";
 
 export default function ItemsList() {
 
-	const [items, setItems] = useState(null);
-	const [error, setError] = useState(null);
+  const [items, setItems] = useState(null);
+  const [error, setError] = useState(null);
+  const [search, setSearch] = useState('');
   const [selectedItems, setSelectedItems] = useState([]);
   const [open, setOpen] = useState({ update: false, id: null });
   const handleClose = () => {
     setOpen({ update: false, id: null });
   };
-
-  
-	useEffect(() => {
+    useEffect(() => {
 	/*Lines 13-19 create a variable that holds the logged-in users UUID and
 	then creates a custom HTTP header that sends that data to the backend to allow
 	retrieval of items with matching UUIDs */
-   const userUuid = localStorage.getItem('userUuid');
-   console.log(typeof userUuid)
+    const userUuid = localStorage.getItem('userUuid');
    		axios.get("http://localhost:8080/items", {
    		 headers: {
    		  'UserUUID': userUuid
