@@ -4,14 +4,19 @@ body {
 }
 
 #landing-page {
-    align-items: center;
-    padding: 5px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+  
   
   #landing-left-col {
-    float: left;
-    margin-top:2rem;
     font-family: "Rubik", sans-serif;
+    display: flex;
+    flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
   }
 
   .text-center {
@@ -20,32 +25,37 @@ body {
   }
   
   #logo {
-    max-width: 200px;
-    height: 75px
+    height: 150px;
+    margin-top: 3rem;
+    align-self: center; 
     
   }
   
   #landing-right-col {
     text-align: center;
+    margin-top: 2rem;
   }
   
   .landing-content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
-   
   
   h3 {
-    margin-bottom: 10px;
     background-color: #243bec;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 15pt;
   }
   
   h4 {
     font-size: 24px;
     margin-bottom: 10px;
+    background-color: #FFC107;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 0;
+    font-family: "Rubik", sans-serif;
   }
   
   ul {
@@ -58,11 +68,11 @@ body {
   li {
     font-size: 18px;
     margin-bottom: 5px;
-    color: goldenrod;
+    color: #FFC107;
   }
 
   strong {
-    color:goldenrod;
+    color:#FFC107;
     font-size: 45pt;
   }
 
@@ -72,7 +82,90 @@ body {
   }
 
 #get-started-button {
-    color:white;
+    color:ghostwhite;
+    font-family: "Rubik", sans-serif;
 }
 
-#get-started-button:
+#box1, #box2, #box3 {
+  width: 200px;
+  height: 5rem;
+  overflow: hidden;
+  padding:1rem;
+  background-color: #243bec;
+  box-sizing: border-box;
+  border-radius: 1rem;
+  color: ghostwhite;
+  font-family: "Rubik", sans-serif;
+  font-size: 11pt;
+  margin-top: 1rem;
+}
+
+
+
+.box-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.box-row {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  width: 50rem;
+}
+
+
+/* Phone */
+@media (max-width: 800px) {
+
+  #landing-page {
+    overflow-x: hidden;
+  }
+ 
+  #landing-left-col {
+    margin-top: 20rem;
+  }
+
+  #logo {
+    max-width: 150px;
+    height: auto;
+    margin-top: -40rem;
+  }
+
+  h3 {
+    font-size: 20px;
+    padding: .5rem;
+  }
+
+  h4 {
+    margin-top: -13rem;
+    font-size: 16px;
+    width: 20rem;
+    margin-right: auto;
+    margin-left:auto;
+  }
+
+  #box1,
+  #box2,
+  #box3 {
+    width: 15%;
+    font-size: 10px;
+  }
+
+  #box3 {
+    margin-right: 2rem;
+  }
+
+  .box-container {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  button {
+    margin-top: -2rem;
+  }
+  
+}
+
+
