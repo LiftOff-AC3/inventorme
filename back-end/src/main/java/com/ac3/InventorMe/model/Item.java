@@ -12,7 +12,7 @@ public class Item {
     private String itemName;
     private String description;
     private int itemQuantity;
-    private UUID userUuid;
+    private UUID userId;
 
     public int getId() {
         return id;
@@ -38,13 +38,19 @@ public class Item {
         this.description = description;
     }
 
-    public int getItemQuantity() { return itemQuantity; }
+    public int getItemQuantity() {
+        return itemQuantity;
+    }
 
     public void setItemQuantity(int itemQuantity) {
         this.itemQuantity = itemQuantity;
     }
 
-    public UUID getUserUuid() { return userUuid; }
+    public UUID getUserId() {
+        return userId;
+    }
 
-    public void setUserUuid(UUID userUuid) { this.userUuid = userUuid; }
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
 }

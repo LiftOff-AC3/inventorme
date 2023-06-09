@@ -25,9 +25,9 @@ public class ItemController {
     }
 
     @GetMapping("/items")
-    List<Item>getAllItems(@RequestHeader("UserUUID") String authorization){
-        UUID loggedInUuid = UUID.fromString(authorization);
-        return itemRepository.findByUserUuid(loggedInUuid);
+    List<Item> getAllItems(@RequestHeader("UserId") String authorization) {
+        UUID loginId = UUID.fromString(authorization);
+        return itemRepository.findByUserId(loginId);
     }
 
     public ItemController(ItemRepository itemRepository) {

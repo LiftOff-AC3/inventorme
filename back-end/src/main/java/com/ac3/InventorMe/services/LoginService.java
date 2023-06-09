@@ -21,33 +21,34 @@ public class LoginService {
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    //Compares input password with hashed password stored in the database
+    // Compares input password with hashed password stored in the database
     public boolean validateLogin(String email, String password) {
         Login login = loginRepository.findByEmail(email);
         String enteredPassword = login.getPassword();
 
         return encoder.matches(password, enteredPassword);
     }
-    //Used to retrieves email of logged-in user
+
+    // Used to retrieves email of logged-in user
     public Login findByEmail(String email) {
-     return loginRepository.findByEmail(email);
+        return loginRepository.findByEmail(email);
     }
 
-    //Creates authentication token that expires after 24hrs
+    // Creates authentication token that expires after 24hrs
     public String generateAuthToken(Login login) {
 
         long expirationTime = 86400000;
         Date expirationDate = new Date(System.currentTimeMillis() + expirationTime);
 
         Map<String, Object> claims = new HashMap<>();
-        claims.put("userUuid", login.getUserUuid());
+        claims.put("userId", login.getUserId());
 
         SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
         JwtBuilder jwtBuilder = Jwts.builder()
-            .setClaims(claims)
-            .setExpiration(expirationDate)
-            .signWith(key, SignatureAlgorithm.HS256);
+                .setClaims(claims)
+                .setExpiration(expirationDate)
+                .signWith(key, SignatureAlgorithm.HS256);
 
         return jwtBuilder.compact();
     }

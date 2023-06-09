@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateItem() {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
   const [item, setItem] = useState({
     itemName: "",
     itemQuantity: "",
@@ -16,19 +15,18 @@ export default function CreateItem() {
   };
   
   const onSubmit = async (e) => {
-   e.preventDefault();
-       try {
-         const userUuid = localStorage.getItem("userUuid");
-           const newItem = {
-             itemName: item.itemName,
-             itemQuantity: item.itemQuantity,
-             description: item.description,
-             userUuid: userUuid
-           };
-       await axios.post("http://localhost:8080/item", newItem)
-         .then(navigate("/items"));
-   } catch (err) {
-      alert(err);
+      try {
+        const userId = localStorage.getItem("userId");
+        const newItem = {
+          itemName: item.itemName,
+          itemQuantity: item.itemQuantity,
+          description: item.description,
+          userId: userId
+        };
+      await axios.post("/item", newItem)
+      .then(navigate("/items"));
+      } catch (err) {
+        alert(err);
     }
   };
 
@@ -59,7 +57,7 @@ export default function CreateItem() {
 
               <input 
                 type={"number"}
-     className="form-control"
+                className="form-control"
                 placeholder="Enter Quantity to Store"
                 name="itemQuantity"
                 value={item.itemQuantity}

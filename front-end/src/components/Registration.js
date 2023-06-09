@@ -39,18 +39,17 @@ export default function Registration() {
     e.preventDefault();
     const hashedPassword = bcrypt.hashSync(password, 10);
     try {
-      const response = await axios.post("http://localhost:8080/registration", {
+      const response = await axios.post("/registration", {
           name: name,
           company: company,
           email: email,
         });
-
-      const userUuid = response.data;
-
-      await axios.post("http://localhost:8080/login", {
+      const userId = response.data;
+      
+      await axios.post("/login", {
         email: email,
         password: hashedPassword,
-        userUuid: userUuid
+        userId: userId
       });
       alert("Registration Success!");
       navigate("/login");

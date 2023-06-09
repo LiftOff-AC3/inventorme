@@ -40,7 +40,7 @@ public class LoginController {
                 String authToken = loginService.generateAuthToken(login);
                 Map<String, Object> response = new HashMap<>();
                 response.put("token", authToken);
-                response.put("userUuid", loggedInUser.getUserUuid());
+                response.put("userId", loggedInUser.getUserId());
                 return ResponseEntity.ok().body(response);
             }
         }

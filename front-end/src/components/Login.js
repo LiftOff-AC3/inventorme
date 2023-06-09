@@ -20,9 +20,9 @@ export default function Login() {
       if (response.status === 200) {
 
         const authToken = response.data.token;
-        const userUuid = response.data.userUuid;
+        const userId = response.data.userId;
         localStorage.setItem("token", authToken);
-        localStorage.setItem("userUuid", userUuid);
+        localStorage.setItem("userId", userId);
 
         navigate("/items");
       }

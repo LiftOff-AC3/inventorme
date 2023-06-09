@@ -12,19 +12,18 @@ export default function ItemsList() {
   const handleClose = () => {
     setOpen({ update: false, id: null });
   };
-    useEffect(() => {
-    const userUuid = localStorage.getItem('userUuid');
-   		axios.get("http://localhost:8080/items", {
-   		 headers: {
-   		  'UserUUID': userUuid
-   		 }
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    axios.get("/items", {
+      headers: {
+      'UserId': userId
+  }
+	}).then((response) => {
+			setItems(response.data)
 		})
-			.then((response) => {
-				setItems(response.data)
-			})
-			.catch(error => {
-				setError(error);
-			});
+		.catch(error => {
+			setError(error);
+		});
 	}, [error]);
 
   function handleCheckboxSelect(e, itemId) {
@@ -59,7 +58,6 @@ export default function ItemsList() {
       alert("Error deleting items", error);
     }
   }
-
   return (
     <>
       <h1 className="m-5 text-center">Items List</h1>
@@ -95,7 +93,7 @@ export default function ItemsList() {
                 return search.toLowerCase() === ""
                   ? item
                   : item.itemName.toLowerCase().includes(search) ||
-                      item.description.toLowerCase().includes(search);
+                    item.description.toLowerCase().includes(search);
               })
               .map((item) => (
                 <tr key={item.id}>
