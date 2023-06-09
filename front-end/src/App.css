@@ -7,6 +7,8 @@ nav {
 position: fixed;
 top: 0;
 width: 100%;
+background-color: rgb(34, 0, 204);
+
 }
 .landing-nav {
 display: flex;
@@ -27,6 +29,12 @@ justify-content: space-between;
 .register-nav-link,
 .add-nav-link{
 margin: .5rem;
+color:ghostwhite;
+font-family: "Rubik", sans-serif;
+}
+
+.add-nav-link:hover {
+    color: #ffc107;
 }
 
 @media(max-width: 800px) {
@@ -43,50 +51,3 @@ height: auto;
 
 }
 }
-#item-table { 
-    width: 60%; 
-    align-content: center; 
-    border:10rem; 
-    border-color: ghostwhite;
-    margin-left:auto; 
-    margin-right:auto; 
-    margin-bottom:auto;
-    overflow-x: auto; 
-    overflow-y: auto; 
-    color:ghostwhite;
-    background-color: rgba(248, 248, 255, 0.175);
-  
-  } 
-  .item-row:hover { 
-
-    background-color: #450093; 
-    color:ghostwhite; 
-  
-  } 
-
-  .item-row {
-    color: rgb(199, 196, 253);
-    font-family: 'Rubik', sans-serif;
-
-
-
-  }
-
-    .view-item-page {
-    background-color: rgb(2, 2, 69);
-    color: ghostwhite;
-    padding-bottom: 20rem;
-    margin-top:5rem;
-}
-
-#item-header {
-    font-family: 'Rubik', sans-serif;
-}
-
-#item-delete-button {
-    margin-left:19rem;
-    margin-bottom: 1rem;
-    font-family: "Rubik", sans-serif;
-    border-radius: 10px;
-}
-   

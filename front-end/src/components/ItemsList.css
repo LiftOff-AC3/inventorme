@@ -1,0 +1,53 @@
+body {
+    background-color: rgb(0,0,69);
+}
+
+#item-table { 
+    width: 60%; 
+    align-content: center;
+    margin-left:auto; 
+    margin-right:auto; 
+    margin-bottom:auto;
+    overflow-x: auto; 
+    overflow-y: auto; 
+    color:ghostwhite;
+    background-color: rgb(34, 0, 204);
+  
+  }
+ #delete-column {
+    width: 10%;
+ }
+
+  tr{
+    color: rgb(220, 218, 255);
+    font-family: 'Rubik', sans-serif;
+  }
+
+  tr:hover { 
+    background-color: #ffc107ba; 
+    color:ghostwhite; 
+  } 
+  
+    .view-item-page {
+    background-color: rgb(2, 2, 69);
+    color: ghostwhite;
+    padding-bottom: 20rem;
+    margin-top:7rem;
+}
+
+    #item-header {
+        font-family: 'Rubik', sans-serif;
+    }
+
+    #item-delete-button {
+        margin-left:19rem;
+        margin-bottom: .5rem;
+        font-family: "Rubik", sans-serif;
+        border-radius: 10px;
+    }
+    
+    input {
+        margin: 1rem;
+        border-radius: 1rem;
+        width: 10rem;
+    }

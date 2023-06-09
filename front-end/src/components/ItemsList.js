@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UpdateItem from "./UpdateItem";
+import "./ItemsList.css"
 
 export default function ItemsList() {
 
@@ -59,13 +60,8 @@ export default function ItemsList() {
 	return (
 		<body class="view-item-page">
 		<h1  id='item-header' className="m-5 text-center">Items List</h1>
-    <input
-          className="text-center"
-          type="text"
-          onChange={(e) => setSearch(e.target.value.toLowerCase())}
-          placeholder="Search for Item..."
-        />
-		<div className='item-list-table m-5'>
+  
+		{/* <div className='item-list-table m-5'> */}
 		  <button id='item-delete-button'
         onClick={handleDelete}
         type="button"
@@ -73,15 +69,22 @@ export default function ItemsList() {
       >
         Delete
 		  </button>
+      <input
+          className="text-center"
+          type="text"
+          onChange={(e) => setSearch(e.target.value.toLowerCase())}
+          placeholder="Search for Item..."
+        />
       <div id='item-table'>
-        <table className='table table-bordered'>
+        <table className='table table-bordered table-responsive text-nowrap'>
           <thead>
-            <tr className='table-light text-center'>
-              <td> Delete </td>
+            <tr className='table-light text-dark text-center'>
+              <td id="delete-column"> Delete </td>
               <td> ID </td>
               <td> Name </td>
               <td> Quantity </td>
               <td> Description </td>
+              <td> Location </td>
               <td> Edit </td>
             </tr>
           </thead>
@@ -108,10 +111,11 @@ export default function ItemsList() {
                     <td> {item.itemName} </td>
                     <td> {item.itemQuantity} </td>
                     <td> {item.description} </td>
+                    <td> {item.location} </td>
                     <td>
                       {!(open.update && open.id === item.id) && (
                         <button
-                          className="viewItemButton"
+                          className="btn btn-warning btn-sm"
                           onClick={() => {
                             setOpen({ ...open, update: true, id: item.id });
                           }}
@@ -126,6 +130,7 @@ export default function ItemsList() {
                           toEditTitle={item.itemName}
                           toEditItemQuantity={item.itemQuantity}
                           toEditDescription={item.description}
+                          toEditLocation={item.location}
                           item={item.id}
                         />
                       )}
@@ -135,7 +140,7 @@ export default function ItemsList() {
             </tbody>
           </table>
         </div>
-      </div>
+      {/* </div> */}
     </body>
   );
 }

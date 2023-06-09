@@ -53,11 +53,13 @@ public class Item {
 
     public void setUserId(UUID userId) {
         this.userId = userId;
+    }
+
     public String getLocation() {
         return location;
     }
 
-    public void setLocation() {
+    public void setLocation(String location) {
         this.location = location;
     }
 }
