@@ -36,21 +36,23 @@ export default function Registration() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     const hashedPassword = bcrypt.hashSync(password, 10);
     try {
-      await axios
-        .post("/registration", {
+      const response = await axios.post("/registration", {
           name: name,
           company: company,
           email: email,
-          password: hashedPassword,
-        })
-        .then(navigate("/items"));
+        });
+      const userId = response.data;
+      
       await axios.post("/login", {
         email: email,
-        password: password,
+        password: hashedPassword,
+        userId: userId
       });
       alert("Registration Success!");
+      navigate("/login");
     } catch (err) {
       alert(err);
     }

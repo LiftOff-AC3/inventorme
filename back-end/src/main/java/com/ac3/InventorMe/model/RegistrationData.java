@@ -1,14 +1,13 @@
 package com.ac3.InventorMe.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class RegistrationData {
     @Id
-    private UUID uuid = UUID.randomUUID();
+    private UUID id = UUID.randomUUID();
     private String name;
     private String company;
     private String email;
@@ -30,6 +29,14 @@ public class RegistrationData {
         this.company = company;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -46,12 +53,4 @@ public class RegistrationData {
         this.password = password;
     }
 
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
 }

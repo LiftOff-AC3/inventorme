@@ -1,17 +1,18 @@
 package com.ac3.InventorMe.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+
+import jakarta.persistence.*;
+import java.util.UUID;
 
 @Entity
 public class Item {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String itemName;
     private String description;
     private int itemQuantity;
+    private UUID userId;
 
     public int getId() {
         return id;
@@ -43,5 +44,13 @@ public class Item {
 
     public void setItemQuantity(int itemQuantity) {
         this.itemQuantity = itemQuantity;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
     }
 }

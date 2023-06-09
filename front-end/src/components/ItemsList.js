@@ -3,6 +3,7 @@ import axios from "axios";
 import UpdateItem from "./UpdateItem";
 
 export default function ItemsList() {
+
   const [items, setItems] = useState([]);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState('');
@@ -11,18 +12,19 @@ export default function ItemsList() {
   const handleClose = () => {
     setOpen({ update: false, id: null });
   };
-
-  console.log(open);
   useEffect(() => {
-    axios
-      .get("/items")
-      .then((response) => {
-        setItems(response.data);
-      })
-      .catch((error) => {
-        setError(error);
-      });
-  }, [error]);
+    const userId = localStorage.getItem('userId');
+    axios.get("/items", {
+      headers: {
+      'UserId': userId
+  }
+	}).then((response) => {
+			setItems(response.data)
+		})
+		.catch(error => {
+			setError(error);
+		});
+	}, [error]);
 
   function handleCheckboxSelect(e, itemId) {
     const isChecked = e.target.checked;
@@ -36,7 +38,6 @@ export default function ItemsList() {
   async function handleDelete(e) {
     e.preventDefault();
     try {
-      //deletes each item
       await Promise.all(
         selectedItems.map((itemId) =>
           axios.delete("/item", {
@@ -44,7 +45,6 @@ export default function ItemsList() {
           })
         )
       );
-      //refreshes item table after deletion
       axios
         .get("/items")
         .then((response) => {
@@ -53,7 +53,6 @@ export default function ItemsList() {
         .catch((error) => {
           setError(error);
         });
-      //clear selected items array
       setSelectedItems([]);
     } catch (error) {
       alert("Error deleting items", error);
@@ -94,7 +93,7 @@ export default function ItemsList() {
                 return search.toLowerCase() === ""
                   ? item
                   : item.itemName.toLowerCase().includes(search) ||
-                      item.description.toLowerCase().includes(search);
+                    item.description.toLowerCase().includes(search);
               })
               .map((item) => (
                 <tr key={item.id}>
@@ -140,4 +139,5 @@ export default function ItemsList() {
       </div>
     </>
   );
+
 }

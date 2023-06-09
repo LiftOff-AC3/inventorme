@@ -5,14 +5,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function UpdateItem({ id }) {
+  const navigate = useNavigate();
   const [editItem, setEditItem] = useState({
     itemName: "",
     itemQuantity: "",
     description: "",
   });
-  const navigate = useNavigate();
-
-  console.log({ id });
   const handleSubmit = async (e) => {
     try {
       await axios.put(`/item/${id}`, editItem, {
