@@ -22,6 +22,7 @@ export default function CreateItem() {
           itemName: item.itemName,
           itemQuantity: item.itemQuantity,
           description: item.description,
+          location: item.location,
           userId: userId
         };
       await axios.post("/item", newItem)
