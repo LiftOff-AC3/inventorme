@@ -35,8 +35,8 @@ export default function Navigation() {
 					<div className="login-nav">
 						<Link className="login-nav-link" to="/" style={linkStyle}>
 							<img
-								id="logo"
-								src="logo_transparent.png"
+								id="logo-nav"
+								src="logo_transparent_nav.png"
 								alt="logo"
 								className="float-start"
 							></img>
@@ -51,8 +51,8 @@ export default function Navigation() {
 					<div className="register-nav">
 						<Link class="register-nav-link" to="/" style={linkStyle}>
 							<img
-								id="logo"
-								src="logo_transparent.png"
+								id="logo-nav"
+								src="logo_transparent_nav.png"
 								alt="logo"
 								className="float-start"
 							></img>
@@ -67,8 +67,8 @@ export default function Navigation() {
 					<div className="add-nav">
 						<Link className="add-nav-link" to="/" style={linkStyle}>
 							<img
-								id="logo"
-								src="logo_transparent.png"
+								id="logo-nav"
+								src="logo_transparent_nav.png"
 								alt="logo"
 								className="float-start"
 							></img>
@@ -83,8 +83,8 @@ export default function Navigation() {
 					<div className="add-nav">
 						<Link className="add-nav-link" to="/" style={linkStyle}>
 							<img
-								id="logo"
-								src="logo_transparent.png"
+								id="logo-nav"
+								src="logo_transparent_nav.png"
 								alt="logo"
 								className="float-start"
 							></img>
