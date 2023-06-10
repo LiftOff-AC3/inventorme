@@ -12,6 +12,14 @@ export default function Navigation() {
 	const isAddItemPage = location.pathname === "/add";
 	const isItemsViewPage = location.pathname === "/items";
 	const isLandingPage = location.pathname === "/";
+	const handleLogout = async () => {
+		try {
+			await localStorage.removeItem("token");
+			await localStorage.removeItem("userUuid");
+		} catch (error) {
+			alert("An error occurred. Please try again later.");
+		}
+	};
 
 	const linkStyle = {
 		textDecoration: "none"
@@ -73,7 +81,7 @@ export default function Navigation() {
 								className="float-start"
 							></img>
 						</Link>
-						<Link className="add-nav-link" to="" style={linkStyle}>
+						<Link className="add-nav-link" onClick={handleLogout} to="" style={linkStyle}>
 							Log Out
 						</Link>
 					</div>
@@ -93,7 +101,7 @@ export default function Navigation() {
 							<Link className="add-nav-link" to="/add" style={linkStyle}>
 								Add
 							</Link>
-							<Link className="add-nav-link" to="" style={linkStyle}>
+							<Link className="add-nav-link" onClick={handleLogout} to="" style={linkStyle}>
 								Log Out
 							</Link>
 						</div>
