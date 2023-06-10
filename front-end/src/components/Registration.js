@@ -62,7 +62,7 @@ export default function Registration() {
     <div id="registration-page">
       <h1 className="text-center">Register</h1>
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formName" className="m-5">
+        <Form.Group id="registration-form" controlId="formName" className="m-5">
           <Form.Label>Name: </Form.Label>
           <Form.Control
             type="name"

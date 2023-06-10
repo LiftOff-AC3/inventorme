@@ -7,6 +7,8 @@ nav {
 position: fixed;
 top: 0;
 width: 100%;
+background-color: rgb(34, 0, 204);
+
 }
 .landing-nav {
 display: flex;
@@ -35,6 +37,12 @@ justify-content: space-between;
 .register-nav-link,
 .add-nav-link{
 margin: .5rem;
+color: ghostwhite;
+font-family: "Rubik", sans-serif;
+}
+
+.add-nav-link:hover {
+    color: #ffc107;
 }
 #logo-nav {
     width:100px;
@@ -47,12 +55,8 @@ flex-direction: column;
 align-items: center;
 text-align: center
 }
+
 #logo {
 width:auto;
 }
 
- h4 {
-    margin-top: 5rem;
- }
-
-}
