@@ -30,7 +30,6 @@ p {
 margin: 3%;
 font-size: 1.5rem;
 }
-
 #item-delete-button,
 input {
 	height: 2rem;
@@ -42,7 +41,6 @@ input {
  	margin-bottom: .5rem;
  	width: 15rem;
 }
-
 input::placeholder {
 	padding: .5rem;
 	font-size: .9rem;

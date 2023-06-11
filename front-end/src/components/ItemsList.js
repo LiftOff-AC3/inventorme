@@ -16,7 +16,8 @@ export default function ItemsList() {
   const handleClose = () => {
     setOpen({ update: false, id: null });
   };
-  useEffect(() => {
+  
+  useEffect( () => {
     const userId = localStorage.getItem('userId');
     axios.get("/items", {
       headers: {
@@ -64,7 +65,6 @@ export default function ItemsList() {
 	return (
 		<body>
 		<h1  id='item-header' className="m-5 text-center">Items List</h1>
-		{/* <div className='item-list-table m-5'> */}
 		  <div id="table-crud-items">
 				<div id="search-elements">
 					<p> Search: </p>
@@ -157,7 +157,6 @@ export default function ItemsList() {
             </tbody>
           </table>
         </div>
-      {/* </div> */}
     </body>
   );
 }
