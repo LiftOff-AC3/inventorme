@@ -12,6 +12,13 @@ export default function UpdateItem({ id }) {
     description: "",
     location: "",
   });
+  const [isOpen, setIsOpen] = useState(true);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    window.location.reload();
+  };
+
   const handleSubmit = async (e) => {
     try {
       await axios.put(`/item/${id}`, editItem, {
@@ -28,56 +35,68 @@ export default function UpdateItem({ id }) {
 
   return (
     <div>
-      <h1 className="text-center">Update Item</h1>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formName" className="m-5">
-          <Form.Label>Item Name: </Form.Label>
-          <Form.Control
-            type="text"
-            value={editItem.itemName}
-            onChange={(e) =>
-              setEditItem({ ...editItem, itemName: e.target.value })
-            }
-            required
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="formQuantity" className="m-5">
-          <Form.Label>Quantity: </Form.Label>
-          <Form.Control
-            type="text"
-            value={editItem.itemQuantity}
-            onChange={(e) =>
-              setEditItem({ ...editItem, itemQuantity: e.target.value })
-            }
-            required
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="formDescription" className="m-5">
-          <Form.Label>Description: </Form.Label>
-          <Form.Control
-            type="text"
-            value={editItem.description}
-            onChange={(e) =>
-              setEditItem({ ...editItem, description: e.target.value })
-            }
-            required
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="formLocation" className="m-5">
-          <Form.Label>Location: </Form.Label>
-          <Form.Control
-            type="text"
-            value={editItem.location}
-            onChange={(e) =>
-              setEditItem({ ...editItem, location: e.target.value })
-            }
-            required
-          ></Form.Control>
-        </Form.Group>
-        <Button className="mx-5" variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+      {isOpen && (
+        <div>
+          <h1 className="text-center">Update Item</h1>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formName" className="m-5">
+              <Form.Label>Item Name: </Form.Label>
+              <Form.Control
+                type="text"
+                value={editItem.itemName}
+                onChange={(e) =>
+                  setEditItem({ ...editItem, itemName: e.target.value })
+                }
+                required
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId="formQuantity" className="m-5">
+              <Form.Label>Quantity: </Form.Label>
+              <Form.Control
+                type="text"
+                value={editItem.itemQuantity}
+                onChange={(e) =>
+                  setEditItem({ ...editItem, itemQuantity: e.target.value })
+                }
+                required
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId="formDescription" className="m-5">
+              <Form.Label>Description: </Form.Label>
+              <Form.Control
+                type="text"
+                value={editItem.description}
+                onChange={(e) =>
+                  setEditItem({ ...editItem, description: e.target.value })
+                }
+                required
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId="formLocation" className="m-5">
+              <Form.Label>Location: </Form.Label>
+              <Form.Control
+                type="text"
+                value={editItem.location}
+                onChange={(e) =>
+                  setEditItem({ ...editItem, location: e.target.value })
+                }
+                required
+              ></Form.Control>
+            </Form.Group>
+            <Button className="mx-5" variant="primary" type="submit">
+              Submit
+            </Button>
+            <Button
+              className="mx-5"
+              variant="primary"
+              type="submit"
+              onClick={handleClose}
+            >
+              Cancel
+            </Button>
+          </Form>
+        </div>
+      )}
     </div>
   );
 }
