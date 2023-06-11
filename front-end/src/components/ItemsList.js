@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UpdateItem from "./UpdateItem";
-import "./ItemsList.css"
+import "./ItemsList.css";
 
 export default function ItemsList() {
-
   const [items, setItems] = useState([]);
   const [error, setError] = useState(null);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [selectedItems, setSelectedItems] = useState([]);
   const [open, setOpen] = useState({ update: false, id: null });
   const handleClose = () => {
     setOpen({ update: false, id: null });
   };
-  
-  useEffect( () => {
-    const userId = localStorage.getItem('userId');
-    axios.get("/items", {
-      headers: {
-      'UserId': userId
-  }
-	}).then((response) => {
-			setItems(response.data)
-		}).catch(error => {
-			setError(error);
-		});
-	}, [error]);
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    axios
+      .get("/items", {
+        headers: {
+          UserId: userId,
+        },
+      })
+      .then((response) => {
+        setItems(response.data);
+      })
+      .catch((error) => {
+        setError(error);
+      });
+  }, [error]);
 
   function handleCheckboxSelect(e, itemId) {
     const isChecked = e.target.checked;
@@ -46,7 +48,8 @@ export default function ItemsList() {
           })
         )
       );
-      axios.get("/items")
+      axios
+        .get("/items")
         .then((response) => {
           setItems(response.data);
         })
@@ -58,26 +61,29 @@ export default function ItemsList() {
       alert("Error deleting items", error);
     }
   }
-	return (
-		<body class="view-item-page">
-		<h1  id='item-header' className="m-5 text-center">Items List</h1>
-    <button id='item-delete-button'
-      onClick={handleDelete}
-      type="button"
-      class="btn btn-secondary btn-sm btn-danger"
-    >
-      Delete
-    </button>
-    <input
-      className="text-center"
-      type="text"
-      onChange={(e) => setSearch(e.target.value.toLowerCase())}
-      placeholder="Search for Item..."
-    />
-      <div id='item-table'>
-        <table className='table table-bordered table-responsive text-nowrap'>
+  return (
+    <body class="view-item-page">
+      <h1 id="item-header" className="m-5 text-center">
+        Items List
+      </h1>
+      <button
+        id="item-delete-button"
+        onClick={handleDelete}
+        type="button"
+        class="btn btn-secondary btn-sm btn-danger"
+      >
+        Delete
+      </button>
+      <input
+        className="text-center"
+        type="text"
+        onChange={(e) => setSearch(e.target.value.toLowerCase())}
+        placeholder="Search for Item..."
+      />
+      <div id="item-table">
+        <table className="table table-bordered table-responsive text-nowrap">
           <thead>
-            <tr className='table-light text-dark text-center'>
+            <tr className="table-light text-dark text-center">
               <td id="delete-column"> Delete </td>
               <td> ID </td>
               <td> Name </td>
@@ -88,57 +94,57 @@ export default function ItemsList() {
             </tr>
           </thead>
           <tbody>
-              {items
-                .filter((item) => {
-                  return search.toLowerCase() === ""
-                    ? item
-                    : item.itemName.toLowerCase().includes(search) ||
+            {items
+              .filter((item) => {
+                return search.toLowerCase() === ""
+                  ? item
+                  : item.itemName.toLowerCase().includes(search) ||
                       item.description.toLowerCase().includes(search);
-                })
-                .map((item) => (
-                  <tr key={item.id}>
-                    <td>
-                      <label>
-                        <input
-                          type="checkbox"
-                          onChange={(e) => handleCheckboxSelect(e, item.id)}
-                          checked={selectedItems.includes(item.id)}
-                        />
-                      </label>
-                    </td>
-                    <td> {item.id} </td>
-                    <td> {item.itemName} </td>
-                    <td> {item.itemQuantity} </td>
-                    <td> {item.description} </td>
-                    <td> {item.location} </td>
-                    <td>
-                      {!(open.update && open.id === item.id) && (
-                        <button
-                          className="btn btn-warning btn-sm"
-                          onClick={() => {
-                            setOpen({ ...open, update: true, id: item.id });
-                          }}
-                        >
-                          Edit
-                        </button>
-                      )}
-                      {open.update && open.id === item.id && (
-                        <UpdateItem
-                          id={open.id}
-                          onClose={handleClose}
-                          toEditTitle={item.itemName}
-                          toEditItemQuantity={item.itemQuantity}
-                          toEditDescription={item.description}
-                          toEditLocation={item.location}
-                          item={item.id}
-                        />
-                      )}
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>
+              })
+              .map((item) => (
+                <tr key={item.id}>
+                  <td>
+                    <label>
+                      <input
+                        type="checkbox"
+                        onChange={(e) => handleCheckboxSelect(e, item.id)}
+                        checked={selectedItems.includes(item.id)}
+                      />
+                    </label>
+                  </td>
+                  <td> {item.id} </td>
+                  <td> {item.itemName} </td>
+                  <td> {item.itemQuantity} </td>
+                  <td> {item.description} </td>
+                  <td> {item.location} </td>
+                  <td>
+                    {!(open.update && open.id === item.id) && (
+                      <button
+                        className="btn btn-warning btn-sm"
+                        onClick={() => {
+                          setOpen({ ...open, update: true, id: item.id });
+                        }}
+                      >
+                        Edit
+                      </button>
+                    )}
+                    {open.update && open.id === item.id && (
+                      <UpdateItem
+                        id={open.id}
+                        onClose={handleClose}
+                        toEditTitle={item.itemName}
+                        toEditItemQuantity={item.itemQuantity}
+                        toEditDescription={item.description}
+                        toEditLocation={item.location}
+                        item={item.id}
+                      />
+                    )}
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
       {/* </div> */}
     </body>
   );
