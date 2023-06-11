@@ -1,62 +1,65 @@
 #landing-page {
-display: flex;
-justify-content: space-evenly;
-height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  height: 100vh;
 }
 nav {
-position: fixed;
-top: 0;
-width: 100%;
-background-color: rgb(34, 0, 204);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgb(34, 0, 204);
 
 }
 .landing-nav {
-display: flex;
-justify-content: flex-end;
-align-content: center;
-background-color: #243bec;
-font-family: "Rubik", sans-serif;
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  background-color: #243bec;
+  font-family: "Rubik", sans-serif;
 }
 
 .landing-nav-link {
-margin: .5rem;
-color: ghostwhite;
+  margin: .5rem;
+  color: ghostwhite;
 }
 
 .landing-nav-link:hover {
-    color:#FFC107;
+  color:#FFC107;
 }
+
 .login-nav,
 .register-nav,
 .add-nav{
-display: flex;
-flex-direction: row;
-justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
 .login-nav-link,
 .register-nav-link,
 .add-nav-link{
-margin: .5rem;
-color: ghostwhite;
-font-family: "Rubik", sans-serif;
+  margin: .5rem;
+  color: ghostwhite;
+  font-family: "Rubik", sans-serif;
 }
 
 .add-nav-link:hover {
-    color: #ffc107;
+  color: #ffc107;
 }
+
 #logo-nav {
-    width:100px;
+  width:100px;
 }
+
 @media(max-width: 800px) {
-#landing-page {
-max-width: 800px;
-display: flex;
-flex-direction: column;
-align-items: center;
-text-align: center
+  #landing-page {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center
+  }
+  #logo {
+    width:auto;
+  }
 }
-
-#logo {
-width:auto;
-}
-
