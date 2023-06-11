@@ -13,7 +13,8 @@ export default function ItemsList() {
   const handleClose = () => {
     setOpen({ update: false, id: null });
   };
-  useEffect(() => {
+  
+  useEffect( () => {
     const userId = localStorage.getItem('userId');
     axios.get("/items", {
       headers: {
@@ -60,21 +61,19 @@ export default function ItemsList() {
 	return (
 		<body class="view-item-page">
 		<h1  id='item-header' className="m-5 text-center">Items List</h1>
-  
-		{/* <div className='item-list-table m-5'> */}
-		  <button id='item-delete-button'
-        onClick={handleDelete}
-        type="button"
-        class="btn btn-secondary btn-sm btn-danger"
-      >
-        Delete
-		  </button>
-      <input
-          className="text-center"
-          type="text"
-          onChange={(e) => setSearch(e.target.value.toLowerCase())}
-          placeholder="Search for Item..."
-        />
+    <button id='item-delete-button'
+      onClick={handleDelete}
+      type="button"
+      class="btn btn-secondary btn-sm btn-danger"
+    >
+      Delete
+    </button>
+    <input
+      className="text-center"
+      type="text"
+      onChange={(e) => setSearch(e.target.value.toLowerCase())}
+      placeholder="Search for Item..."
+    />
       <div id='item-table'>
         <table className='table table-bordered table-responsive text-nowrap'>
           <thead>
