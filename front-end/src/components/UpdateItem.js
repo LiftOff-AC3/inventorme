@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./UpdateItem.css"
 
 export default function UpdateItem({ id }) {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ export default function UpdateItem({ id }) {
   };
 
   return (
-    <div>
+    <div id="update-item-form">
       <h1 className="text-center">Update Item</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formName" className="m-5">
