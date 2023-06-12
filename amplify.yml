@@ -18,7 +18,6 @@ frontend:
   phases:
     build:
       commands:
-        - npm install
         - npm run build
   artifacts:
     # IMPORTANT - Please verify your build output directory
