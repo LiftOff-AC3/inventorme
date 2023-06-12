@@ -19,7 +19,7 @@ const Protected = ({ children }) => {
 
 function App() {
   return (
-    <div>
+    ReactDOM.render(
       <BrowserRouter>
         <Header />
         <Routes>
@@ -31,7 +31,8 @@ function App() {
           <Route path="/item/:id" element={<Protected><UpdateItem /></Protected>} />
         </Routes>
       </BrowserRouter>
-    </div>
+    , document.getElementById('root')
+    );
   );
 }
 

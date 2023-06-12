@@ -28,6 +28,3 @@ frontend:
   cache:
     paths:
       - 'node_modules/**/*'
-    rewriteDirectories:
-      - from: </^[^.]+$|\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf)$)([^.]+$)/>
-      - to: /index.html
