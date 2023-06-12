@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom'
 import { Navigate, BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -19,21 +21,23 @@ const Protected = ({ children }) => {
 
 function App() {
   return (
-    ReactDOM.render(
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Registration />} />
-          <Route path="/add" element={<Protected><Item /></Protected>}/>
-          <Route path="/items" element={<Protected><ItemsList /></Protected>} />
-          <Route path="/item/:id" element={<Protected><UpdateItem /></Protected>} />
-        </Routes>
-      </BrowserRouter>
-    , document.getElementById('root')
-    );
-  );
-}
+ReactDOM.render(
+	<React.StrictMode>
+   <BrowserRouter>
+     <Header />
+     <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Registration />} />
+      <Route path="/add" element={<Protected><Item /></Protected>}/>
+      <Route path="/items" element={<Protected><ItemsList /></Protected>} />
+      <Route path="/item/:id" element={<Protected><UpdateItem /></Protected>} />
+    </Routes>
+   </BrowserRouter>
+  </React.StrictMode>,
+     document.getElementById('root')
+)
+
+)}
 
 export default App;
