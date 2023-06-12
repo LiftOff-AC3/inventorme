@@ -4,7 +4,8 @@ backend:
     # IMPORTANT - Please verify your build commands
     build:
       commands:
-        - gradle build
+        - '# Execute Amplify CLI with the helper script'
+        - amplifyPush --simple
   artifacts:
     baseDirectory: build/libs/
     files:
