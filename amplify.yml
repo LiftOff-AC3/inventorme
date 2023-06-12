@@ -4,16 +4,28 @@ backend:
     # IMPORTANT - Please verify your build commands
     build:
       commands:
-        - '# Execute Amplify CLI with the helper script'
-        - amplifyPush --simple
+        - ./gradlew build
+  artifacts:
+    baseDirectory: build/libs/
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - ~/.gradle/wrapper
+      - ~/.gradle/caches
 frontend:
   phases:
+    preBuild:
+      commands:
+        - npm ci
     build:
-      commands: []
+      commands:
+        - npm start
   artifacts:
     # IMPORTANT - Please verify your build output directory
     baseDirectory: /
     files:
       - '**/*'
   cache:
-    paths: []
+    paths:
+      - 'node_modules/**/*'
