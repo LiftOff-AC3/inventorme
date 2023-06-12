@@ -106,4 +106,29 @@ tr:hover {
   #edit-button{
     margin-top: .5rem;
   }
+  tr:hover { 
+    background-color: #ffc107ba; 
+    color:ghostwhite; 
+  }
+  .view-item-page {
+    background-color: rgb(2, 2, 69);
+    color: ghostwhite;
+    padding-bottom: 20rem;
+    margin-top:7rem;
+  }
+  #item-header {
+    font-family: 'Rubik', sans-serif;
+  }
+  #item-delete-button {
+    margin-left:19rem;
+    margin-bottom: .5rem;
+    font-family: "Rubik", sans-serif;
+    border-radius: 10px;
+  }   
+  input {
+    margin: 1rem;
+    border-radius: 1rem;
+    width: 10rem;
+  }
 }
+
