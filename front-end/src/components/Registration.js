@@ -110,6 +110,8 @@ export default function Registration() {
         <Button
           className="mx-5"
           variant="primary"
+          variant="warning"
+          id="registration-button"
           type="submit"
           disabled={!validateForm()}
         >

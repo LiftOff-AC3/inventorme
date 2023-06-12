@@ -26,9 +26,12 @@ nav {
 .login-nav,
 .register-nav,
 .add-nav{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+background-color: rgb(0, 57, 200);
+font-family: "Rubik", sans-serif;
+margin-top: 1rem;
 }
 .login-nav-link,
 .register-nav-link,
