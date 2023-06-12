@@ -18,10 +18,11 @@ frontend:
   phases:
     build:
       commands:
+        - npm ci
         - npm run build
   artifacts:
     # IMPORTANT - Please verify your build output directory
-    baseDirectory: public/
+    baseDirectory: ./
     files:
       - '**/*'
   cache:
