@@ -16,9 +16,6 @@ backend:
       - ~/.gradle/caches
 frontend:
   phases:
-    preBuild:
-      commands:
-        - npm ci
     build:
       commands:
         - npm start
