@@ -56,7 +56,6 @@ export default function CreateItem() {
               <label htmlFor="Quantity" className="form-label">
                 Quantity
               </label>
-
               <input 
                 type={"number"}
                 className="form-control"
