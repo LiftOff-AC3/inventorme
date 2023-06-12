@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./UpdateItem.css"
 
 export default function UpdateItem({ id }) {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ export default function UpdateItem({ id }) {
     itemName: "",
     itemQuantity: "",
     description: "",
+    location: "",
   });
   const handleSubmit = async (e) => {
     try {
@@ -26,7 +28,7 @@ export default function UpdateItem({ id }) {
   };
 
   return (
-    <div>
+    <div id="update-item-form">
       <h1 className="text-center">Update Item</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formName" className="m-5">
@@ -58,6 +60,17 @@ export default function UpdateItem({ id }) {
             value={editItem.description}
             onChange={(e) =>
               setEditItem({ ...editItem, description: e.target.value })
+            }
+            required
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group controlId="formLocation" className="m-5">
+          <Form.Label>Location: </Form.Label>
+          <Form.Control
+            type="text"
+            value={editItem.location}
+            onChange={(e) =>
+              setEditItem({ ...editItem, location: e.target.value })
             }
             required
           ></Form.Control>

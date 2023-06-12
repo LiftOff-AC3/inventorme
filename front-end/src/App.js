@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navigate, BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Item from "./components/CreateItem";
@@ -9,6 +9,13 @@ import Login from "./components/Login";
 import Header from "./components/Header";
 import UpdateItem from "./components/UpdateItem";
 
+const Protected = ({ children }) => {
+   const token = localStorage.getItem("token");
+  if(!token) {
+    return <Navigate to="/" replace/>;
+  }
+  return children
+};
 
 function App() {
   return (
@@ -19,9 +26,9 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
-          <Route path="/add" element={<Item />} />
-          <Route path="/items" element={<ItemsList />} />
-          <Route path="/item/:id" element={<UpdateItem />} />
+          <Route path="/add" element={<Protected><Item /></Protected>}/>
+          <Route path="/items" element={<Protected><ItemsList /></Protected>} />
+          <Route path="/item/:id" element={<Protected><UpdateItem /></Protected>} />
         </Routes>
       </BrowserRouter>
     </div>

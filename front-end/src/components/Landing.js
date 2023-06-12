@@ -1,7 +1,10 @@
+import styles from "./Landing.css"
+import {Link} from "react-router-dom";
+
 export default function Landing() {
   return (
     <>
-      <div id="landing-page" className="bg-dark text-white p-5">
+      <div id="landing-page" className="p-5 container-md">
         <div id="landing-left-col">
           {/* <img
             id="logo"
@@ -18,6 +21,11 @@ export default function Landing() {
             <li>Add item details with custom fields</li>
             <li>Search inventory by name, category, quantity</li>
           </p>
+          <Link to="/register">
+          <button id="get-started-button" className="btn btn-warning mx-5" type="submit">
+            Get Started!
+          </button>
+          </Link>
         </div>
       </div>
     </>

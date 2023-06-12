@@ -12,6 +12,14 @@ export default function Navigation() {
 	const isAddItemPage = location.pathname === "/add";
 	const isItemsViewPage = location.pathname === "/items";
 	const isLandingPage = location.pathname === "/";
+	const handleLogout = async () => {
+		try {
+			await localStorage.removeItem("token");
+			await localStorage.removeItem("userUuid");
+		} catch (error) {
+			alert("An error occurred. Please try again later.");
+		}
+	};
 
 	const linkStyle = {
 		textDecoration: "none"
@@ -44,8 +52,8 @@ export default function Navigation() {
 					<div className="login-nav">
 						<Link className="login-nav-link" to="/" style={linkStyle}>
 							<img
-								id="logo"
-								src="logo_transparent.png"
+								id="logo-nav"
+								src="logo_transparent_nav.png"
 								alt="logo"
 								className="float-start"
 							></img>
@@ -60,8 +68,8 @@ export default function Navigation() {
 					<div className="register-nav">
 						<Link class="register-nav-link" to="/" style={linkStyle}>
 							<img
-								id="logo"
-								src="logo_transparent.png"
+								id="logo-nav"
+								src="logo_transparent_nav.png"
 								alt="logo"
 								className="float-start"
 							></img>
@@ -76,13 +84,13 @@ export default function Navigation() {
 					<div className="add-nav">
 						<Link className="add-nav-link" to="/" style={linkStyle}>
 							<img
-								id="logo"
-								src="logo_transparent.png"
+								id="logo-nav"
+								src="logo_transparent_nav.png"
 								alt="logo"
 								className="float-start"
 							></img>
 						</Link>
-						<Link className="add-nav-link" to="" style={linkStyle}>
+						<Link className="add-nav-link" onClick={handleLogout} to="" style={linkStyle}>
 							Log Out
 						</Link>
 					</div>
@@ -92,17 +100,14 @@ export default function Navigation() {
 					<div className="add-nav">
 						<Link className="add-nav-link" to="/" style={linkStyle}>
 							<img
-								id="logo"
-								src="logo_transparent.png"
+								id="logo-nav"
+								src="logo_transparent_nav.png"
 								alt="logo"
 								className="float-start"
 							></img>
 						</Link>
 						<div>
-							<Link className="add-nav-link" to="/add" style={linkStyle}>
-								Add
-							</Link>
-							<Link className="add-nav-link" to="" style={linkStyle}>
+							<Link className="add-nav-link" onClick={handleLogout} to="" style={linkStyle}>
 								Log Out
 							</Link>
 						</div>

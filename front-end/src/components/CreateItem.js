@@ -9,6 +9,7 @@ export default function CreateItem() {
     itemName: "",
     itemQuantity: "",
     description: "",
+    location: ""
   });
   
   const onChangeItem = (e) => {
@@ -22,6 +23,7 @@ export default function CreateItem() {
           itemName: item.itemName,
           itemQuantity: item.itemQuantity,
           description: item.description,
+          location: item.location,
           userId: userId
         };
       await axios.post("/item", newItem)
@@ -30,8 +32,7 @@ export default function CreateItem() {
         alert(err);
     }
   };
-
-  return (
+  
   <div class="box">
     <h2 className="m-4">Create Item</h2>
     <form onSubmit={onSubmit} class="form-container">
