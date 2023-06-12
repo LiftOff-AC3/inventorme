@@ -1,7 +1,7 @@
 #landing-page {
-display: flex;
-justify-content: space-evenly;
-height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  height: 100vh;
 }
 nav {
 position: fixed;
@@ -11,11 +11,11 @@ height:5rem;
 background-color: rgb(0, 57, 200);
 }
 .landing-nav {
-display: flex;
-justify-content: flex-end;
-align-content: center;
-background-color: #243bec;
-font-family: "Rubik", sans-serif;
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  background-color: #243bec;
+  font-family: "Rubik", sans-serif;
 }
 .landing-nav-link {
 margin: .5rem;
@@ -84,4 +84,6 @@ nav.navbar {
 a.landing-nav-link{
   margin-left:1rem;
 }
+
+
 
