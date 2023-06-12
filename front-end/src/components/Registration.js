@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import bcrypt from "bcryptjs";
-import styles from "./Registration.css";
 
 export default function Registration() {
   const [name, setName] = useState("");
@@ -60,10 +59,10 @@ export default function Registration() {
   };
 
   return (
-    <div className="registration-box">
-      <h1 class="text-center">Register</h1>
-      <Form class="form-container" onSubmit={handleSubmit}>
-        <Form.Group controlId="formName" className="m-1">
+    <div id="registration-page">
+      <h1 className="text-center">Register</h1>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group id="registration-form" controlId="formName" className="m-5">
           <Form.Label>Name: </Form.Label>
           <Form.Control
             type="name"
@@ -72,7 +71,7 @@ export default function Registration() {
             placeholder="John Doe"
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId="formCompany" className="m-1">
+        <Form.Group controlId="formCompany" className="m-5">
           <Form.Label>Company: </Form.Label>
           <Form.Control
             type="name"
@@ -81,7 +80,7 @@ export default function Registration() {
             placeholder="My Company"
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId="formEmail" className="m-1">
+        <Form.Group controlId="formEmail" className="m-5">
           <Form.Label>Email: </Form.Label>
           <Form.Control
             type="email"
@@ -90,7 +89,7 @@ export default function Registration() {
             placeholder="email@gmail.com"
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId="formPassword" className="m-1">
+        <Form.Group controlId="formPassword" className="m-5">
           <Form.Label>Password: </Form.Label>
           <Form.Control
             type="password"
@@ -99,7 +98,7 @@ export default function Registration() {
             placeholder="*********"
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId="formConfirmPassword" className="m-1">
+        <Form.Group controlId="formConfirmPassword" className="m-5">
           <Form.Label>Verify Password: </Form.Label>
           <Form.Control
             type="password"
@@ -110,6 +109,7 @@ export default function Registration() {
         </Form.Group>
         <Button
           className="mx-5"
+          variant="primary"
           variant="warning"
           id="registration-button"
           type="submit"

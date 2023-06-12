@@ -39,10 +39,10 @@ export default function Login() {
   }
 
   return (
-    <div className="login-box">
-      <h1 className="m-1 text-center">Log In</h1>
+    <div className="Login">
+      <h1 className="m-5 text-center">Log In</h1>
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formEmail" className="m-3">
+        <Form.Group controlId="formEmail" className="m-5">
           <Form.Label>Email: </Form.Label>
           <Form.Control
             type="email"
@@ -52,7 +52,7 @@ export default function Login() {
             required
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId="formPassword" className="m-3">
+        <Form.Group controlId="formPassword" className="m-5">
           <Form.Label>Password: </Form.Label>
           <Form.Control
             type="password"
@@ -65,7 +65,7 @@ export default function Login() {
         <Button
           id="login-submit-button"
           className="mx-5"
-          variant="warning"
+          variant="primary"
           type="submit"
         >
           Submit
