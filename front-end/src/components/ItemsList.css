@@ -1,53 +1,109 @@
 body {
-  background-color: rgb(0,0,69);
+ height: 100vh;
+ margin-top: 7rem;
+ padding: 0;
+ background-color: rgb(0,0,69);
 }
-
-#item-table { 
-  width: 60%; 
+#fixed-items {
+	position:fixed;
+	top: 50px;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+thead td {
+	font-size: 1rem;
+}
+#table-crud-items{
+	width: 80%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  margin-left: 10%;
+  margin-bottom: .5rem;
+}
+#search-elements {
+	display: flex;
+	align-items: center;
+}
+p {
+margin: 3%;
+font-size: 1.5rem;
+}
+#item-delete-button,
+input {
+	height: 2rem;
+	font-family: "Rubik", sans-serif;
+  border-radius: 10px;
+}
+#search-input {
+ 	font-size: 1rem;
+ 	margin-bottom: .5rem;
+ 	width: 15rem;
+}
+input::placeholder {
+	padding: .5rem;
+	font-size: .9rem;
+	text-align: center;
+}
+table {
+  max-width: 80%;
   align-content: center;
-  margin-left:auto; 
-  margin-right:auto; 
-  margin-bottom:auto;
-  overflow-x: auto; 
-  overflow-y: auto; 
+  margin: auto;
+  overflow-x: hidden;
   color:ghostwhite;
   background-color: rgb(34, 0, 204);
 }
-  
-#delete-column {
-  width: 10%;
+#item-table tbody {
+	overflow-y: hidden;
 }
-
+td {
+width: 200px;
+vertical-align: middle;
+text-align: center;
+}
+#checkbox
+{
+width: 20px;
+}
 tr{
   color: rgb(220, 218, 255);
   font-family: 'Rubik', sans-serif;
 }
-
-tr:hover { 
-  background-color: #ffc107ba; 
-  color:ghostwhite; 
-} 
-  
-.view-item-page {
-  background-color: rgb(2, 2, 69);
-  color: ghostwhite;
-  padding-bottom: 20rem;
-  margin-top:7rem;
+tr:hover {
+  background-color: #ffc107ba;
+  color:ghostwhite;
 }
-
 #item-header {
   font-family: 'Rubik', sans-serif;
 }
-
-#item-delete-button {
-  margin-left:19rem;
-  margin-bottom: .5rem;
+#delete-button {
   font-family: "Rubik", sans-serif;
   border-radius: 10px;
 }
-    
-input {
-  margin: 1rem;
-  border-radius: 1rem;
-  width: 10rem;
+@media(max-width: 800px) {
+	#table-crud-items,
+	#search-elements {
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  }
+  #delete-button,
+  #add-button,
+  #edit-button {
+    margin-top: .5rem;
+  }
+}
+@media(max-width: 600px) {
+	#table-crud-items,
+	#search-elements {
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  }
+  #delete-button,
+  #add-button,
+  #edit-button{
+    margin-top: .5rem;
+  }
 }
