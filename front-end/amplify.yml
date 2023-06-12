@@ -22,9 +22,12 @@ frontend:
         - npm run build
   artifacts:
     # IMPORTANT - Please verify your build output directory
-    baseDirectory: ./
+    baseDirectory: build
     files:
       - '**/*'
   cache:
     paths:
       - 'node_modules/**/*'
+    rewriteDirectories:
+      - from: </^[^.]+$|\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf)$)([^.]+$)/>
+      - to: /index.html
