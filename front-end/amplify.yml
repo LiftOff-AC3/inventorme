@@ -16,9 +16,11 @@ backend:
       - ~/.gradle/caches
 frontend:
   phases:
-    build:
+    preBuild:
       commands:
         - npm ci
+    build:
+      commands:
         - npm run build
   artifacts:
     # IMPORTANT - Please verify your build output directory
