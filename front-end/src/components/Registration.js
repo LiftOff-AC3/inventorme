@@ -109,6 +109,7 @@ export default function Registration() {
           ></Form.Control>
         </Form.Group>
         <Button
+          className="mx-5"
           variant="warning"
           id="registration-button"
           type="submit"
